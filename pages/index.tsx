@@ -3,9 +3,9 @@ import Head from 'next/head';
 import PopularMovies from '@/components/home/PopularMovies';
 import NowPlaying from '@/components/home/NowPlaying';
 
-import type { GetServerSideProps } from 'next';
+import type { GetStaticProps } from 'next';
 
-export const getServerSideProps = (async () => {
+export const getStaticProps = (async () => {
   const options = {
     method: 'GET',
     headers: {
@@ -32,8 +32,9 @@ export const getServerSideProps = (async () => {
       popularMoviesRes,
       nowPlayingMoviesRes,
     },
+    revalidate: 3600,
   };
-}) satisfies GetServerSideProps;
+}) satisfies GetStaticProps;
 
 type HomeProps = {
   popularMoviesRes: movie.MovieList;
