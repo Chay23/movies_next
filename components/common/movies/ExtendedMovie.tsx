@@ -1,18 +1,18 @@
-import Image from 'next/image';
+import MovieImage from '../image/MovieImage';
 
 type Props = {
   movie: movie.Movie;
 };
 
 const ExtendedMovie = ({ movie }: Props) => {
-  // handle empty movie image
   const date = new Date(movie.release_date);
 
   return (
     <article>
       <div className='relative w-full max-w-xl aspect-5/7 mb-5'>
-        <Image
-          src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/w500${movie.poster_path}`}
+        <MovieImage
+          imageSrc={movie.poster_path}
+          serverWidth={500}
           fill
           alt='Movie poster'
           style={{ objectFit: 'cover' }}

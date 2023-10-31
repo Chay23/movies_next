@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
+
+import MovieImage from '../image/MovieImage';
 
 type Props = {
   movie: movie.Movie;
@@ -8,8 +9,9 @@ type Props = {
 const Movie = ({ movie }: Props) => {
   return (
     <article className='relative flex flex-col rounded-xl overflow-hidden hover:scale-125'>
-      <Image
-        src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/w400${movie.poster_path}`}
+      <MovieImage
+        imageSrc={movie.poster_path}
+        serverWidth={400}
         width={200}
         height={400}
         alt='Movie poster'
