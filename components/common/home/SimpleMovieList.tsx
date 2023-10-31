@@ -1,10 +1,11 @@
-import Movie from './Movie';
+import Movie from './SimpleMovie';
 
-type MovieListProps = {
+type Props = {
   movies: movie.Movie[];
 };
 
-const MovieList = ({ movies }: MovieListProps) => {
+const MovieList = ({ movies }: Props) => {
+  // implement carousel
   return (
     <div className='grid grid-cols-10 gap-5'>
       {movies.map(movie => (
