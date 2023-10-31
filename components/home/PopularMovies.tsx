@@ -1,4 +1,4 @@
-import MovieList from '@/components/common/movieList/MovieList';
+import MovieList from '@/components/common/home/SimpleMovieList';
 
 type PopularMoviesProps = {
   moviesRes: movie.MovieList;

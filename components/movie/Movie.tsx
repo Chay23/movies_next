@@ -14,10 +14,11 @@ const Movie = ({ movie }: MovieProps) => {
       </div>
       <div className='flex gap-x-10'>
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/original${movie.poster_path}`}
+          src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/w500${movie.poster_path}`}
           width={400}
-          height={500}
+          height={600}
           alt='Movie poster'
+          priority
         />
         <MovieDescription movie={movie} />
       </div>
