@@ -28,7 +28,7 @@ const MovieImage = ({
         width={width}
         height={height}
         alt={alt}
-        fill
+        fill={fill}
         style={style}
         {...rest}
       />
