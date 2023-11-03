@@ -22,6 +22,11 @@ namespace movie {
     poster_path: string;
   };
 
+  type MovieResError = {
+    success?: boolean;
+    status_message: string;
+  };
+
   type MovieList = {
     page: number;
     results: movie.Movie[];
