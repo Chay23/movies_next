@@ -8,6 +8,7 @@ type Props = {
   fill?: boolean;
   alt: string;
   style?: {};
+  priority?: boolean;
   rest?: any[];
 };
 
@@ -19,6 +20,7 @@ const MovieImage = ({
   alt,
   fill = false,
   style = {},
+  priority = false,
   ...rest
 }: Props) => {
   if (imageSrc) {
@@ -30,6 +32,10 @@ const MovieImage = ({
         alt={alt}
         fill={fill}
         style={style}
+        sizes={
+          fill ? '(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 13vw' : ''
+        }
+        priority={priority}
         {...rest}
       />
     );
@@ -39,9 +45,13 @@ const MovieImage = ({
       src='/static/images/no-picture.png'
       width={width}
       height={height}
-      fill
+      fill={fill}
       style={{ objectFit: 'contain' }}
       alt='No image'
+      sizes={
+        fill ? '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' : ''
+      }
+      priority={priority}
       {...rest}
     />
   );
