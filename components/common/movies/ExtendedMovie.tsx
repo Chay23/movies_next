@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import MovieImage from '../image/MovieImage';
 
 type Props = {
@@ -18,7 +20,14 @@ const ExtendedMovie = ({ movie }: Props) => {
           style={{ objectFit: 'cover' }}
         />
       </div>
-      <h4>{movie.title}</h4>
+      <Link
+        href={{
+          pathname: '/movies/[id]',
+          query: { id: movie.id },
+        }}
+        className='text-2xl hover:font-semibold'>
+        {movie.title}
+      </Link>
       <p>{date.getFullYear() || ''}</p>
       <p className='truncate mt-2'>{movie.overview}</p>
     </article>

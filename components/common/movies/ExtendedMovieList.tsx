@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import ExtendedMovie from './ExtendedMovie';
 
 type Props = {
@@ -14,4 +16,4 @@ const ExtendedMovieList = ({ movies }: Props) => {
   );
 };
 
-export default ExtendedMovieList;
+export default memo(ExtendedMovieList);

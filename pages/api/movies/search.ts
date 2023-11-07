@@ -28,7 +28,7 @@ export default async function handler(
 
     try {
       fetchRes = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/search/movie?query=${value}&include_adult=false&language=en-US&page=${page}`,
+        `${process.env.API_URL}/search/movie?query=${value}&include_adult=false&language=en-US&page=${page}`,
         options
       );
 
