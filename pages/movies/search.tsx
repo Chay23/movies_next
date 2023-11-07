@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import SearchResults from '@/components/search/SearchResults';
 
 import type { GetServerSideProps } from 'next';
@@ -11,14 +13,10 @@ export const getServerSideProps = (async context => {
     },
   };
 
-  const searchValue = context.query!.value;
+  const { value, page } = context.query;
 
   const res = await fetch(
-    `${
-      process.env.API_URL
-    }/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=${
-      context.query!.page
-    }`,
+    `${process.env.API_URL}/search/movie?query=${value}&include_adult=false&language=en-US&page=${page}`,
     options
   );
 
@@ -27,18 +25,23 @@ export const getServerSideProps = (async context => {
   return {
     props: {
       moviesRes,
-      searchedValue: searchValue,
     },
   };
 }) satisfies GetServerSideProps;
 
 type SearchPageProps = {
   moviesRes: movie.MovieList;
-  searchedValue: string;
 };
 
-const SearchPage = ({ moviesRes, searchedValue }: SearchPageProps) => {
-  return <SearchResults moviesRes={moviesRes} searchedValue={searchedValue} />;
+const SearchPage = ({ moviesRes }: SearchPageProps) => {
+  return (
+    <>
+      <Head>
+        <title>Search Results</title>
+      </Head>
+      <SearchResults moviesRes={moviesRes} />
+    </>
+  );
 };
 
 export default SearchPage;
