@@ -6,13 +6,20 @@ const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 
 type LayoutProps = {
   children: JSX.Element;
+  px?: boolean;
+  py?: boolean;
 };
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, px = true, py = true }: LayoutProps) => {
   return (
     <>
       <Navbar font={roboto} />
-      <main className={`px-40 py-20 ${roboto.className}`}>{children}</main>
+      <main
+        className={`relative ${px ? 'px-40' : ''} ${py ? 'py-20' : ''} ${
+          roboto.className
+        }`}>
+        {children}
+      </main>
       <footer></footer>
     </>
   );
