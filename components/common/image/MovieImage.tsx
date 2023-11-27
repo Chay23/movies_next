@@ -2,9 +2,10 @@ import Image from 'next/image';
 
 type Props = {
   imageSrc: string;
-  serverWidth: number;
+  serverWidth: number | string;
   width?: number;
   height?: number;
+  className?: string;
   fill?: boolean;
   alt: string;
   style?: {};
@@ -17,18 +18,23 @@ const MovieImage = ({
   serverWidth,
   width,
   height,
+  className = '',
   alt,
   fill = false,
   style = {},
   priority = false,
   ...rest
 }: Props) => {
+  let imageWidth =
+    typeof serverWidth === 'string' ? serverWidth : `w${serverWidth}`;
+
   if (imageSrc) {
     return (
       <Image
-        src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/w${serverWidth}${imageSrc}`}
+        src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/${imageWidth}${imageSrc}`}
         width={width}
         height={height}
+        className={className}
         alt={alt}
         fill={fill}
         style={style}
@@ -45,6 +51,7 @@ const MovieImage = ({
       src='/static/images/no-picture.png'
       width={width}
       height={height}
+      className={className}
       fill={fill}
       style={{ objectFit: 'contain' }}
       alt='No image'
