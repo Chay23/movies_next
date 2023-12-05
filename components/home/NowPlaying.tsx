@@ -1,4 +1,4 @@
-import MovieList from '@/components/common/home/SimpleMovieList';
+import MovieCarousel from '@/components/common/home/MovieCarousel';
 
 type NowPlayingMoviesProps = {
   moviesRes: movie.MovieList;
@@ -8,7 +8,7 @@ const NowPlaying = ({ moviesRes }: NowPlayingMoviesProps) => {
   return (
     <section className=''>
       <h1 className='my-12'>Now Playing</h1>
-      <MovieList movies={moviesRes.results} />
+      <MovieCarousel movies={moviesRes.results} />
     </section>
   );
 };
