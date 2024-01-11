@@ -20,6 +20,12 @@ html {
   }
 }
 
+@layer components {
+  .nav-link-styling {
+    @apply after:absolute after:bg-slate-200 after:bottom-0 after:left-0 after:w-full after:transition-all;
+  }
+}
+
 @layer base {
   h1 {
     @apply text-5xl;

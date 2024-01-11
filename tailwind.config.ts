@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'blue-charcoal': '#212427',
+      },
       aspectRatio: {
         '5/7': '5 / 7',
         '3/1': '3 / 1',
