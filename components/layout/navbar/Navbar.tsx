@@ -2,6 +2,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import MenuItems from './MenuItems';
+
+import { menuItems } from './constants';
+
 import type { NextFont } from 'next/dist/compiled/@next/font';
 import type { ChangeEvent, FormEvent } from 'react';
 
@@ -25,12 +29,13 @@ const Navbar = ({ font }: NavbarProps) => {
 
   return (
     <nav
-      className={`flex items-center justify-between h-20 px-16 bg-gray-800 text-slate-100 ${font.className}`}>
+      className={`fixed w-full z-50 flex items-center justify-between h-16 px-16 bg-gray-800 text-slate-100 ${font.className}`}>
       <Link href={'/'}>
-        <h1>Movies</h1>
+        <h2>Movies</h2>
       </Link>
-      <div className='flex items-center gap-4'>
-        <form onSubmit={handleSearchSubmit}>
+
+      <MenuItems items={menuItems}>
+        <form onSubmit={handleSearchSubmit} className='self-center'>
           <input
             placeholder='Search'
             value={searchValue}
@@ -38,13 +43,7 @@ const Navbar = ({ font }: NavbarProps) => {
             className='rounded-lg p-1 text-black'
           />
         </form>
-        <Link href={'/movies'} className='hover:underline'>
-          All Movies
-        </Link>
-        <Link href={'/movies'} className='hover:underline'>
-          Popular
-        </Link>
-      </div>
+      </MenuItems>
     </nav>
   );
 };

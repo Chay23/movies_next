@@ -33,3 +33,16 @@ namespace movie {
     total_pages: number;
   };
 }
+
+namespace navbar {
+  type SubMenuItem = {
+    title: string;
+    query: string;
+  };
+
+  type MenuItem = {
+    title: string;
+    url: string;
+    submenu?: SubMenuItem[];
+  };
+}

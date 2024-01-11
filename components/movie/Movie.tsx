@@ -8,7 +8,7 @@ type MovieProps = {
 const Movie = ({ movie }: MovieProps) => {
   return (
     <article>
-      <div className='flex items-center gap-3 mb-5'>
+      <div className='flex items-center gap-3 mb-10'>
         <h1>{movie.title}</h1>
         <h2>({movie.original_title})</h2>
       </div>

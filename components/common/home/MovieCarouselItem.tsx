@@ -10,7 +10,7 @@ const MovieCarouselItem = ({ movie }: Props) => {
   return (
     <Link
       href={{
-        pathname: '/movies/[id]',
+        pathname: '/movies/details/[id]',
         query: { id: movie.id },
       }}
       >
