@@ -22,7 +22,7 @@ const ExtendedMovie = ({ movie }: Props) => {
       </div>
       <Link
         href={{
-          pathname: '/movies/[id]',
+          pathname: '/movies/details/[id]',
           query: { id: movie.id },
         }}
         className='text-2xl hover:font-semibold'>
