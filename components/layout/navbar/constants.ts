@@ -4,12 +4,25 @@ export const menuItems: navbar.MenuItem[] = [
     url: '/movies',
     submenu: [
       {
-        title: 'Popular',
-        query: 'popular',
+        key: 'discover',
+        title: 'Discover',
+        href: '/movies/discover',
       },
       {
+        key: 'popular',
+        title: 'Popular',
+        href: {
+          pathname: '/movies/[list]',
+          query: { list: 'popular' },
+        },
+      },
+      {
+        key: 'now-playing',
         title: 'Now Playing',
-        query: 'now-playing',
+        href: {
+          pathname: '/movies/[list]',
+          query: { list: 'now-playing' },
+        },
       },
     ],
   },
@@ -18,8 +31,9 @@ export const menuItems: navbar.MenuItem[] = [
     url: '/series',
     submenu: [
       {
+        key: 'popular',
         title: 'Popular',
-        query: 'popular',
+        href: 'popular',
       },
     ],
   },

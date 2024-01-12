@@ -4,6 +4,10 @@ namespace movie {
     name: string;
   };
 
+  type GenreList = {
+    genres: Genre[];
+  };
+
   type Movie = {
     adult: boolean;
     genres: Genre[];
@@ -36,8 +40,14 @@ namespace movie {
 
 namespace navbar {
   type SubMenuItem = {
+    key: string;
     title: string;
-    query: string;
+    href:
+      | string
+      | {
+          pathname: string;
+          query: { [key: string]: string };
+        };
   };
 
   type MenuItem = {
@@ -45,4 +55,8 @@ namespace navbar {
     url: string;
     submenu?: SubMenuItem[];
   };
+}
+
+namespace filters {
+  type SortOption = { value: string | number; label: string };
 }

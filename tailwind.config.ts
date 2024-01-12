@@ -15,6 +15,9 @@ const config: Config = {
         '5/7': '5 / 7',
         '3/1': '3 / 1',
       },
+      gridTemplateColumns: {
+        '1/4': '1fr 4fr'
+      }
     },
   },
   plugins: [],
