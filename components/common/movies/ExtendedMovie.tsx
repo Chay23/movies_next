@@ -11,7 +11,7 @@ const ExtendedMovie = ({ movie }: Props) => {
 
   return (
     <article>
-      <div className='relative w-full max-w-xl aspect-5/7 mb-5'>
+      <div className='relative w-full max-w-xl aspect-5/7 mb-5 rounded-xl overflow-hidden'>
         <MovieImage
           imageSrc={movie.poster_path}
           serverWidth={500}

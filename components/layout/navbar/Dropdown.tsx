@@ -24,11 +24,8 @@ const Dropdown = ({
         {item.submenu!.map(submenuItem => {
           return (
             <Link
-              href={{
-                pathname: '/movies/[list]',
-                query: { list: submenuItem.query },
-              }}
-              key={submenuItem.query}
+              href={submenuItem.href}
+              key={submenuItem.key}
               className='px-6 py-2 hover:bg-slate-300/30'>
               {submenuItem.title}
             </Link>
