@@ -7,8 +7,6 @@ import ExtendedMovieList from '../common/movies/ExtendedMovieList';
 
 import type { ChangeEvent, FormEvent } from 'react';
 
-const fetcher = (...args: [any]) => fetch(...args).then(res => res.json());
-
 type Props = {
   moviesRes: movie.MovieList;
 };
@@ -24,10 +22,7 @@ const SearchResults = ({ moviesRes }: Props) => {
 
   const { data: movies, isLoading } = useSWR(
     `${process.env.NEXT_PUBLIC_INTERNAL_API_URL}/movies/search?${query}`,
-    fetcher,
     {
-      revalidateOnFocus: false,
-      revalidateOnMount: false,
       fallbackData: moviesRes,
     }
   );

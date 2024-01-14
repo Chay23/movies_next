@@ -6,7 +6,7 @@ export const menuItems: navbar.MenuItem[] = [
       {
         key: 'discover',
         title: 'Discover',
-        href: '/movies/discover',
+        href: '/movies/discover?sort_by=popularity.desc&page=1',
       },
       {
         key: 'popular',
