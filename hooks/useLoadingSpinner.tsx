@@ -4,12 +4,16 @@ import { useEffect, useState } from 'react';
 export const useLoadingSpinner = () => {
   const [isLoading, setLoading] = useState(false);
 
-  const handleStartLoading = () => {
-    setLoading(true);
+  const handleStartLoading = (_: any, { shallow }: { shallow: boolean }) => {
+    if (!shallow) {
+      setLoading(true);
+    }
   };
 
-  const handleStopLoading = () => {
-    setLoading(false);
+  const handleStopLoading = (_: any, { shallow }: { shallow: boolean }) => {
+    if (!shallow) {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {

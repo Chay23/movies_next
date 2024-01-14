@@ -19,7 +19,7 @@ export const getServerSideProps = (async context => {
       process.env.API_URL
     }/discover/movie?include_adult=false&include_video=false&language=en-US&page=${
       query.page || 1
-    }&sort_by=popularity.desc`,
+    }&sort_by=${query.sort_by}`,
     options
   );
 

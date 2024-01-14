@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import Select from 'react-select';
 
 import FilterItem from './FilterItem';
@@ -7,19 +7,16 @@ import { sortOptions } from './constants';
 
 type Props = {
   movieGenres: movie.GenreList;
+  sortOption: filters.SortOption;
+  handleSortOptionChange: (option: filters.SortOption | null) => void;
 };
 
-const Filters = ({ movieGenres }: Props) => {
+const Filters = ({
+  movieGenres,
+  sortOption,
+  handleSortOptionChange,
+}: Props) => {
   const id = useId();
-  const [sortOption, setSortOption] = useState<filters.SortOption>(
-    sortOptions[0]
-  );
-
-  const handleSortOptionChange = (option: filters.SortOption | null) => {
-    if (option) {
-      setSortOption(option);
-    }
-  };
 
   return (
     <aside className='p-5 border border-gray-200 shadow-xl rounded-2xl h-fit'>
@@ -28,7 +25,7 @@ const Filters = ({ movieGenres }: Props) => {
         <Select
           id={id}
           options={sortOptions}
-          defaultValue={sortOptions[0]}
+          defaultValue={sortOptions[1]}
           value={sortOption}
           onChange={handleSortOptionChange}
         />
