@@ -6,6 +6,8 @@ import Discover from '@/components/movies/Discover';
 export const getServerSideProps = (async context => {
   const { query } = context;
 
+  const { page, sort_by, with_genres } = query as Record<string, string>;
+
   const options = {
     method: 'GET',
     headers: {
@@ -14,12 +16,16 @@ export const getServerSideProps = (async context => {
     },
   };
 
+  const queryParams = new URLSearchParams({
+    include_adult: 'false',
+    language: 'en-US',
+    page: page || '1',
+    sort_by,
+    ...(with_genres && { with_genres }),
+  });
+
   const moviewRes = await fetch(
-    `${
-      process.env.API_URL
-    }/discover/movie?include_adult=false&include_video=false&language=en-US&page=${
-      query.page || 1
-    }&sort_by=${query.sort_by}`,
+    `${process.env.API_URL}/discover/movie?${queryParams.toString()}`,
     options
   );
 
@@ -32,13 +38,13 @@ export const getServerSideProps = (async context => {
   const movieGenres = await movieGenresRes.json();
 
   return {
-    props: { movieList, movieGenres },
+    props: { movieList, movieGenres: movieGenres.genres },
   };
 }) satisfies GetServerSideProps;
 
 type Props = {
   movieList: movie.MovieList;
-  movieGenres: movie.GenreList;
+  movieGenres: movie.Genre[];
 };
 
 const DiscoverPage = ({ movieList, movieGenres }: Props) => {

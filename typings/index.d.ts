@@ -4,10 +4,6 @@ namespace movie {
     name: string;
   };
 
-  type GenreList = {
-    genres: Genre[];
-  };
-
   type Movie = {
     adult: boolean;
     genres: Genre[];
@@ -46,7 +42,7 @@ namespace navbar {
       | string
       | {
           pathname: string;
-          query: { [key: string]: string };
+          query: Record<string, string>;
         };
   };
 
@@ -58,5 +54,9 @@ namespace navbar {
 }
 
 namespace filters {
-  type SortOption = { value: string | number; label: string };
+  type SortOption = { value: string; label: string };
+
+  type GenreList = (movie.Genre & {
+    selected?: boolean;
+  })[];
 }
