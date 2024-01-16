@@ -1,10 +1,10 @@
 export const sortOptions: readonly { value: string; label: string }[] = [
-  { value: 'popularity.asc', label: 'Popularity ascending' },
-  { value: 'popularity.desc', label: 'Popularity descending' },
-  { value: 'revenue.asc', label: 'Revenue ascending' },
-  { value: 'revenue.desc', label: 'Revenue descending' },
-  { value: 'primary_release_date.asc', label: 'Release date ascending' },
-  { value: 'primary_release_date.desc', label: 'Release date descending' },
-  { value: 'vote_average.asc', label: 'Vote ascending' },
-  { value: 'vote_average.desc', label: 'Vote descending' },
+  { value: 'popularity.asc', label: 'Popularity Ascending' },
+  { value: 'popularity.desc', label: 'Popularity Descending' },
+  { value: 'revenue.asc', label: 'Revenue Ascending' },
+  { value: 'revenue.desc', label: 'Revenue Descending' },
+  { value: 'primary_release_date.asc', label: 'Release Date Ascending' },
+  { value: 'primary_release_date.desc', label: 'Release Date Descending' },
+  { value: 'vote_average.asc', label: 'Vote Ascending' },
+  { value: 'vote_average.desc', label: 'Vote Descending' },
 ];

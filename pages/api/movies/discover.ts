@@ -16,15 +16,19 @@ export default async function handler(
 
   if (req.method === 'GET') {
     let fetchRes: Response;
-    const { sort_by, page } = req.query;
+    const { sort_by, with_genres, page } = req.query as Record<string, string>;
+
+    const queryParams = new URLSearchParams({
+      include_adult: 'false',
+      language: 'en-US',
+      sort_by,
+      ...(with_genres && { with_genres }),
+      page: page || '1',
+    });
 
     try {
       fetchRes = await fetch(
-        `${
-          process.env.API_URL
-        }/discover/movie?include_adult=false&include_video=false&language=en-US&page=${
-          page || 1
-        }&sort_by=${sort_by}`,
+        `${process.env.API_URL}/discover/movie?${queryParams.toString()}`,
         options
       );
 
