@@ -16,11 +16,11 @@ export default async function handler(
 
   if (req.method === 'GET') {
     let fetchRes: Response;
-    const { value, page } = req.query;
+    const { search, page } = req.query;
 
     // handle error for empty search value
     // empty page query param is handled on the API side
-    if (!value) {
+    if (!search) {
       res.status(400).json({
         status_message: 'Invalid value: Please provide value query parameter.',
       });
@@ -28,7 +28,7 @@ export default async function handler(
 
     try {
       fetchRes = await fetch(
-        `${process.env.API_URL}/search/movie?query=${value}&include_adult=false&language=en-US&page=${page}`,
+        `${process.env.API_URL}/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`,
         options
       );
 

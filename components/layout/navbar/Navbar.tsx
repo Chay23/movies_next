@@ -24,7 +24,7 @@ const Navbar = ({ font }: NavbarProps) => {
   const handleSearchSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSearchValue('');
-    router.push(`/movies/search?value=${searchValue}&page=1`);
+    router.push(`/movies/search?search=${searchValue}&page=1`);
   };
 
   return (

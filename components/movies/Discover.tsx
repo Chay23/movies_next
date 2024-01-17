@@ -74,6 +74,17 @@ const Discover = ({ movieList, movieGenres }: Props) => {
     updateQueryParams(queryParams);
   };
 
+  const handlePageChange = (_: any, page: number) => {
+    const queryParams = {
+      sort_by: querySortOption,
+      ...(queryGenres && { with_genres: queryGenres }),
+      page: page.toString(),
+    };
+
+    updateQueryParams(queryParams);
+    window.scrollTo(0, 0);
+  };
+
   if (data) {
     return (
       <section>
@@ -90,7 +101,14 @@ const Discover = ({ movieList, movieGenres }: Props) => {
               <Spinner />
             </div>
           ) : (
-            <ExtendedMovieList movies={data.results} />
+            <>
+              <ExtendedMovieList
+                movies={data.results}
+                page={parseInt(queryPage)}
+                pages={data.total_pages}
+                handlePageChange={handlePageChange}
+              />
+            </>
           )}
         </div>
       </section>
