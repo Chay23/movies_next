@@ -13,10 +13,10 @@ export const getServerSideProps = (async context => {
     },
   };
 
-  const { value, page } = context.query;
+  const { search, page } = context.query;
 
   const res = await fetch(
-    `${process.env.API_URL}/search/movie?query=${value}&include_adult=false&language=en-US&page=${page}`,
+    `${process.env.API_URL}/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`,
     options
   );
 
