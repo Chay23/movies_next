@@ -13,10 +13,17 @@ export const getServerSideProps = (async context => {
     },
   };
 
-  const { search, page } = context.query;
+  const { search, page } = context.query as Record<string, string | undefined>;
+
+  const queryParams = new URLSearchParams({
+    include_adult: 'false',
+    language: 'en-US',
+    query: search || '',
+    page: page || '1',
+  });
 
   const res = await fetch(
-    `${process.env.API_URL}/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`,
+    `${process.env.API_URL}/search/movie?${queryParams.toString()}`,
     options
   );
 

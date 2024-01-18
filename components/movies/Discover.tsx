@@ -24,8 +24,8 @@ const Discover = ({ movieList, movieGenres }: Props) => {
   const { query } = useRouter();
 
   const {
-    page: queryPage,
-    sort_by: querySortOption,
+    page: queryPage = '1',
+    sort_by: querySortOption = 'popularity.desc',
     with_genres: queryGenres,
   } = query as Record<string, string>;
 
