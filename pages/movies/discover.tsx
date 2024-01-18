@@ -5,7 +5,6 @@ import Discover from '@/components/movies/Discover';
 
 export const getServerSideProps = (async context => {
   const { query } = context;
-
   const { page, sort_by, with_genres } = query as Record<string, string>;
 
   const options = {
@@ -20,7 +19,7 @@ export const getServerSideProps = (async context => {
     include_adult: 'false',
     language: 'en-US',
     page: page || '1',
-    sort_by,
+    sort_by: sort_by || 'popularity.desc',
     ...(with_genres && { with_genres }),
   });
 
