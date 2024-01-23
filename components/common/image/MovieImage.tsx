@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react';
+
 import Image from 'next/image';
 
 type Props = {
@@ -8,8 +10,9 @@ type Props = {
   className?: string;
   fill?: boolean;
   alt: string;
-  style?: {};
+  style?: CSSProperties;
   priority?: boolean;
+  sizes?: string;
   rest?: any[];
 };
 
@@ -23,6 +26,7 @@ const MovieImage = ({
   fill = false,
   style = {},
   priority = false,
+  sizes,
   ...rest
 }: Props) => {
   let imageWidth =
@@ -39,7 +43,9 @@ const MovieImage = ({
         fill={fill}
         style={style}
         sizes={
-          fill ? '(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 13vw' : ''
+          sizes
+            ? sizes
+            : '(max-width: 768px) 30vw, (max-width: 1200px) 40vw, 60vw'
         }
         priority={priority}
         {...rest}

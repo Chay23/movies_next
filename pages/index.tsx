@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import TrendingMovies from '@/components/home/TrendingMovies';
+import TrendingMovies from '@/components/home/trending/TrendingMovies';
 import PopularMovies from '@/components/home/PopularMovies';
 import NowPlaying from '@/components/home/NowPlaying';
 import Layout from '@/components/layout/Layout';
