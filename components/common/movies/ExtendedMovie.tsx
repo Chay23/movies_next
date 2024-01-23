@@ -14,9 +14,10 @@ const ExtendedMovie = ({ movie }: Props) => {
       <div className='relative w-full max-w-xl aspect-5/7 mb-5 rounded-xl overflow-hidden'>
         <MovieImage
           imageSrc={movie.poster_path}
-          serverWidth={500}
+          serverWidth={400}
           fill
           alt='Movie poster'
+          sizes='(max-width: 768px) 5vw, (max-width: 1200px) 10vw, 30vw'
           style={{ objectFit: 'cover' }}
         />
       </div>

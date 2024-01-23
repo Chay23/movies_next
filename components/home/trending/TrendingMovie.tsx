@@ -1,6 +1,5 @@
-import Link from 'next/link';
-
-import MovieImage from '../common/image/MovieImage';
+import MovieImage from '../../common/image/MovieImage';
+import MovieDetails from './MovieDetails';
 
 type Props = {
   movie: movie.Movie;
@@ -16,9 +15,11 @@ const TrendingMovie = ({ movie }: Props) => {
         fill
         style={{
           objectFit: 'cover',
+          filter: 'blur(10px)',
         }}
         className='-z-20'
-        alt='Movie poster'
+        sizes='30vw'
+        alt='Movie background poster'
         priority
       />
       <MovieImage
@@ -26,21 +27,11 @@ const TrendingMovie = ({ movie }: Props) => {
         serverWidth={500}
         width={350}
         height={400}
+        sizes='50vw'
         alt='Movie poster'
         priority
       />
-      <div className='flex flex-col text-slate-200'>
-        <h3>{movie.title}</h3>
-        <p className='mt-5'>{movie.overview}</p>
-        <Link
-          href={{
-            pathname: '/movies/details/[id]',
-            query: { id: movie.id },
-          }}
-          className="mt-5 text-xl w-fit after:content-[''] after:block after:w-0 after:bg-slate-100 after:h-[2px] after:hover:w-full after:transition-all after:duration-500">
-          View
-        </Link>
-      </div>
+      <MovieDetails movie={movie} />
     </article>
   );
 };

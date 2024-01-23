@@ -12,15 +12,15 @@ const MovieCarouselItem = ({ movie }: Props) => {
       href={{
         pathname: '/movies/details/[id]',
         query: { id: movie.id },
-      }}
-      >
-      <article className="relative flex flex-col rounded-xl overflow-hidden">
+      }}>
+      <article className='relative flex flex-col rounded-xl overflow-hidden'>
         <MovieImage
           imageSrc={movie.poster_path}
           serverWidth={400}
           width={200}
           height={400}
           className='hover:opacity-90 transition-all'
+          sizes='30vw'
           alt='Movie poster'
         />
         <div className='p-2'>
