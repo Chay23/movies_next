@@ -1,44 +1,75 @@
-import Head from 'next/head';
+import type { GetStaticProps } from 'next';
+import type { ReactElement } from 'react';
 
+import { getData } from '@/services/api';
+
+import Head from 'next/head';
 import TrendingMovies from '@/components/home/trending/TrendingMovies';
 import PopularMovies from '@/components/home/PopularMovies';
 import NowPlaying from '@/components/home/NowPlaying';
 import Layout from '@/components/layout/Layout';
 
-import type { GetStaticProps } from 'next';
-import type { ReactElement } from 'react';
+import { DEFAULT_PAGE_VALUE, SERVER_ERROR_OBJECT } from '@/utils/constants';
 
 export const getStaticProps = (async () => {
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${process.env.API_BEARER}`,
+  const endpoints = [
+    { recource: '/movie/popular', options: { page: DEFAULT_PAGE_VALUE } },
+    { recource: '/movie/now_playing', options: { page: DEFAULT_PAGE_VALUE } },
+    {
+      recource: '/trending/movie/week',
+      options: { page: DEFAULT_PAGE_VALUE },
     },
-  };
-
-  const urls = [
-    `${process.env.API_URL}/movie/popular?language=en-US&page=1`,
-    `${process.env.API_URL}/movie/now_playing?language=en-US&page=1`,
-    `${process.env.API_URL}/trending/movie/week?language=en-US&page=1`,
   ];
 
-  const [popularMoviesRes, nowPlayingMoviesRes, trendingMoviesRes] =
-    await Promise.all<movie.MovieList>(
-      urls.map(async url => {
-        const res = await fetch(url, options);
-        return await res.json();
-      })
-    );
+  try {
+    const [popularMoviesRes, nowPlayingMoviesRes, trendingMoviesRes] =
+      await Promise.all(
+        endpoints.map(async endpoint => {
+          return await getData<movie.MovieList>(
+            endpoint.recource,
+            endpoint.options
+          );
+        })
+      );
 
-  return {
-    props: {
-      popularMoviesRes,
-      nowPlayingMoviesRes,
-      trendingMoviesRes,
-    },
-    revalidate: 3600,
-  };
+    if (popularMoviesRes.error) {
+      return {
+        props: {
+          ...popularMoviesRes,
+        },
+      };
+    }
+
+    if (nowPlayingMoviesRes.error) {
+      return {
+        props: {
+          ...nowPlayingMoviesRes,
+        },
+      };
+    }
+
+    if (trendingMoviesRes.error) {
+      return {
+        props: {
+          ...trendingMoviesRes,
+        },
+      };
+    }
+
+    return {
+      props: {
+        popularMoviesRes: popularMoviesRes.data,
+        nowPlayingMoviesRes: nowPlayingMoviesRes.data,
+        trendingMoviesRes: nowPlayingMoviesRes.data,
+      },
+      revalidate: 3600,
+    };
+  } catch (e) {
+    console.error(e);
+    return {
+      props: SERVER_ERROR_OBJECT,
+    };
+  }
 }) satisfies GetStaticProps;
 
 type HomeProps = {

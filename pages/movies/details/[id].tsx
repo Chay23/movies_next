@@ -1,28 +1,33 @@
 import Movie from '@/components/movie/Movie';
 
+import { getData } from '@/services/api';
+
+import { SERVER_ERROR_OBJECT } from '@/utils/constants';
+
 import type { GetServerSideProps } from 'next';
 
 export const getServerSideProps = (async context => {
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${process.env.API_BEARER}`,
-    },
-  };
+  try {
+    const res = await getData(`/movie/${context.params!.id}`);
+    if (res.error) {
+      return {
+        props: {
+          res,
+        },
+      };
+    }
 
-  const res = await fetch(
-    `${process.env.API_URL}/movie/${context.params!.id}?language=en-US`,
-    options
-  );
-
-  const movie = await res.json();
-
-  return {
-    props: {
-      movie,
-    },
-  };
+    return {
+      props: {
+        movie: res.data,
+      },
+    };
+  } catch (e) {
+    console.error(e);
+    return {
+      props: SERVER_ERROR_OBJECT,
+    };
+  }
 }) satisfies GetServerSideProps;
 
 type MoviePageProps = {

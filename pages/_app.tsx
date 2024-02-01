@@ -1,24 +1,22 @@
 import '@/styles/globals.css';
 
-import type { ReactElement, ReactNode } from 'react';
-import type { NextPage } from 'next';
-import type { AppProps } from 'next/app';
+import type { ReactElement } from 'react';
+import type { page } from '@/typings/page';
+
 import Head from 'next/head';
 
 import Layout from '@/components/layout/Layout';
-import LoadingPageSpinner from '@/components/common/spinner/LoadingPageSpinner';
 import SWRProvider from '@/components/providers/SWRProvider';
+import ChildComponent from '@/components/app/ChildComponent';
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+export default function App({ Component, pageProps }: page.AppPropsWithLayout) {
+  const error = pageProps.error;
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const defaultLayout = (page: ReactElement) => <Layout>{page}</Layout>;
+  const defaultLayout = (page: ReactElement) => (
+    <Layout px={!error} py={!error}>
+      {page}
+    </Layout>
+  );
 
   const getLayout = Component.getLayout ?? defaultLayout;
 
@@ -31,10 +29,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <title>Movies</title>
       </Head>
       <SWRProvider>
-        <>
-          <Component {...pageProps} />
-          <LoadingPageSpinner />
-        </>
+        <ChildComponent Component={Component} pageProps={pageProps} />
       </SWRProvider>
     </>
   );

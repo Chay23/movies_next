@@ -37,12 +37,9 @@ const Discover = ({ movieList, movieGenres }: Props) => {
     sort_by: querySortOption,
   });
 
-  const { data, isLoading } = useSWR<movie.MovieList>(
-    `${process.env.NEXT_PUBLIC_INTERNAL_API_URL}/movies/discover?${queryParams}`,
-    {
-      fallbackData: movieList,
-    }
-  );
+  const { data, isLoading } = useSWR(`/movies/discover?${queryParams}`, {
+    fallbackData: movieList,
+  });
 
   const handleSortOptionChange = (option: filters.SortOption | null) => {
     if (option) {

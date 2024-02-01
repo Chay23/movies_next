@@ -1,49 +1,38 @@
+import type { api } from '@/typings/api';
+
+import { getData } from '@/services/api';
+
+import {
+  DEFAULT_PAGE_VALUE,
+  DEFAULT_BLANK_VALUE,
+  SERVER_ERROR_OBJECT,
+} from '@/utils/constants';
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-type HandlerResponse = movie.MovieList | movie.MovieResError;
+type HandlerResponse = movie.MovieList | api.ErrorInfo;
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<HandlerResponse>
 ) {
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${process.env.API_BEARER}`,
-    },
-  };
-
   if (req.method === 'GET') {
-    let fetchRes: Response;
-    const { search, page } = req.query;
-
-    // handle error for empty search value
-    // empty page query param is handled on the API side
-    if (!search) {
-      res.status(400).json({
-        status_message: 'Invalid value: Please provide value query parameter.',
-      });
-    }
-
     try {
-      fetchRes = await fetch(
-        `${process.env.API_URL}/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`,
-        options
-      );
+      const { search, page } = req.query as Record<string, string | undefined>;
 
-      const moviesRes: movie.MovieList | movie.MovieResError =
-        await fetchRes.json();
+      const response = await getData<movie.MovieList>('/search/movie', {
+        query: search || DEFAULT_BLANK_VALUE,
+        page: page || DEFAULT_PAGE_VALUE,
+      });
 
-      if (!('results' in moviesRes)) {
-        return res
-          .status(400)
-          .json({ status_message: moviesRes.status_message });
+      if (response.error) {
+        return res.status(response.status).json(response.info);
       }
 
-      res.status(200).json(moviesRes);
+      res.status(200).json(response.data);
     } catch (e) {
       console.error(e);
+      return res.status(500).json(SERVER_ERROR_OBJECT.info);
     }
   }
 }
