@@ -1,44 +1,64 @@
 import type { GetServerSideProps } from 'next';
-import Head from 'next/head';
+import type { api } from '@/typings/api';
 
+import { getData } from '@/services/api';
+
+import Head from 'next/head';
 import Discover from '@/components/movies/Discover';
 
+import {
+  DEFAULT_PAGE_VALUE,
+  DEFAULT_SORT_VALUE,
+  SERVER_ERROR_OBJECT,
+} from '@/utils/constants';
+
 export const getServerSideProps = (async context => {
-  const { query } = context;
-  const { page, sort_by, with_genres } = query as Record<string, string>;
+  try {
+    const { query } = context;
+    const { page, sort_by, with_genres } = query as Record<
+      string,
+      string | undefined
+    >;
 
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${process.env.API_BEARER}`,
-    },
-  };
+    const queryParams = {
+      page: page || DEFAULT_PAGE_VALUE,
+      sort_by: sort_by || DEFAULT_SORT_VALUE,
+      ...(with_genres && { with_genres }),
+    };
 
-  const queryParams = new URLSearchParams({
-    include_adult: 'false',
-    language: 'en-US',
-    page: page || '1',
-    sort_by: sort_by || 'popularity.desc',
-    ...(with_genres && { with_genres }),
-  });
+    const moviesRes = await getData<movie.MovieList>(
+      '/discover/movie',
+      queryParams
+    );
 
-  const moviewRes = await fetch(
-    `${process.env.API_URL}/discover/movie?${queryParams.toString()}`,
-    options
-  );
+    const movieGenresRes = await getData<api.GenreResponse>(
+      '/genre/movie/list'
+    );
 
-  const movieGenresRes = await fetch(
-    `${process.env.API_URL}/genre/movie/list`,
-    options
-  );
+    if (moviesRes.error) {
+      return {
+        props: moviesRes,
+      };
+    }
 
-  const movieList = await moviewRes.json();
-  const movieGenres = await movieGenresRes.json();
+    if (movieGenresRes.error) {
+      return {
+        props: movieGenresRes,
+      };
+    }
 
-  return {
-    props: { movieList, movieGenres: movieGenres.genres },
-  };
+    return {
+      props: {
+        movieList: moviesRes.data,
+        movieGenres: movieGenresRes.data.genres,
+      },
+    };
+  } catch (e) {
+    console.error(e);
+    return {
+      props: SERVER_ERROR_OBJECT,
+    };
+  }
 }) satisfies GetServerSideProps;
 
 type Props = {
