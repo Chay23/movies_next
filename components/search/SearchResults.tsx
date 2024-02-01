@@ -1,8 +1,8 @@
 import type { ChangeEvent, FormEvent } from 'react';
 
+import useSWR from 'swr';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import useSWR from 'swr';
 import { useQueryParams } from '@/hooks/useSearchParams';
 
 import Spinner from '../common/spinner/Spinner';
@@ -24,12 +24,9 @@ const SearchResults = ({ moviesRes }: Props) => {
     page: pageQuery,
   });
 
-  const { data: movies, isLoading } = useSWR<movie.MovieList>(
-    `${process.env.NEXT_PUBLIC_INTERNAL_API_URL}/movies/search?${queryParams}`,
-    {
-      fallbackData: moviesRes,
-    }
-  );
+  const { data: movies, isLoading } = useSWR(`/movies/search?${queryParams}`, {
+    fallbackData: moviesRes,
+  });
 
   const handleSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);

@@ -1,13 +1,13 @@
+import type { NextFont } from 'next/dist/compiled/@next/font';
+import type { ChangeEvent, FormEvent } from 'react';
+
 import { useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import MenuItems from './MenuItems';
 
 import { menuItems } from './constants';
-
-import type { NextFont } from 'next/dist/compiled/@next/font';
-import type { ChangeEvent, FormEvent } from 'react';
 
 type NavbarProps = {
   font: NextFont;

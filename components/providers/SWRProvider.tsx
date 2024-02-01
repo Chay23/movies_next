@@ -1,22 +1,19 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
+
 import { SWRConfig } from 'swr';
+
+import { SWRFetcher } from '@/services/api';
 
 type Props = {
   children: ReactElement;
 };
-
-// handle response errros
-const fetcher = (...args: [any]) =>
-  fetch(...args).then(res => {
-    return res.json();
-  });
 
 const SWRProvider = ({ children }: Props) => {
   return (
     <SWRConfig
       value={{
         refreshInterval: 1800000,
-        fetcher,
+        fetcher: SWRFetcher,
         revalidateOnFocus: false,
         revalidateOnMount: false,
       }}>
