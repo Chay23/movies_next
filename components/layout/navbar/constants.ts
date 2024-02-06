@@ -1,3 +1,5 @@
+import { DEFAULT_PAGE_VALUE, DEFAULT_SORT_VALUE } from '@/utils/constants';
+
 export const menuItems: navbar.MenuItem[] = [
   {
     title: 'Movies',
@@ -6,7 +8,7 @@ export const menuItems: navbar.MenuItem[] = [
       {
         key: 'discover',
         title: 'Discover',
-        href: '/movies/discover?sort_by=popularity.desc&page=1',
+        href: `/movies/discover?sort_by=${DEFAULT_SORT_VALUE}&page=${DEFAULT_PAGE_VALUE}`,
       },
       {
         key: 'popular',

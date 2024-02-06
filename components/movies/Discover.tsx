@@ -14,6 +14,7 @@ import {
   markSelectedGenreOptions,
   getSelectedSortOption,
 } from './utils';
+import { DEFAULT_PAGE_VALUE, DEFAULT_SORT_VALUE } from '@/utils/constants';
 
 type Props = {
   movieList: movie.MovieList;
@@ -24,8 +25,8 @@ const Discover = ({ movieList, movieGenres }: Props) => {
   const { query } = useRouter();
 
   const {
-    page: queryPage = '1',
-    sort_by: querySortOption = 'popularity.desc',
+    page: queryPage = DEFAULT_PAGE_VALUE,
+    sort_by: querySortOption = DEFAULT_SORT_VALUE,
     with_genres: queryGenres,
   } = query as Record<string, string>;
 

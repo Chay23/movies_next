@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import MovieImage from '../image/MovieImage';
+import { DEFAULT_BLANK_VALUE } from '@/utils/constants';
 
 type Props = {
   movie: movie.Movie;
@@ -29,7 +30,7 @@ const ExtendedMovie = ({ movie }: Props) => {
         className='text-2xl hover:font-semibold'>
         {movie.title}
       </Link>
-      <p>{date.getFullYear() || ''}</p>
+      <p>{date.getFullYear() || DEFAULT_BLANK_VALUE}</p>
       <p className='truncate mt-2'>{movie.overview}</p>
     </article>
   );

@@ -8,13 +8,14 @@ import Link from 'next/link';
 import MenuItems from './MenuItems';
 
 import { menuItems } from './constants';
+import { DEFAULT_BLANK_VALUE, DEFAULT_PAGE_VALUE } from '@/utils/constants';
 
 type NavbarProps = {
   font: NextFont;
 };
 
 const Navbar = ({ font }: NavbarProps) => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(DEFAULT_BLANK_VALUE);
   const router = useRouter();
 
   const handleSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,8 +24,10 @@ const Navbar = ({ font }: NavbarProps) => {
 
   const handleSearchSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setSearchValue('');
-    router.push(`/movies/search?search=${searchValue}&page=1`);
+    setSearchValue(DEFAULT_BLANK_VALUE);
+    router.push(
+      `/movies/search?search=${searchValue}&page=${DEFAULT_PAGE_VALUE}`
+    );
   };
 
   return (
