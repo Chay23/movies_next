@@ -9,16 +9,20 @@ import Spinner from '../common/spinner/Spinner';
 import ExtendedMovieList from '../common/movies/ExtendedMovieList';
 import SearchForm from './SearchForm';
 
+import { DEFAULT_BLANK_VALUE, DEFAULT_PAGE_VALUE } from '@/utils/constants';
+
 type Props = {
   moviesRes: movie.MovieList;
 };
 
 const SearchResults = ({ moviesRes }: Props) => {
   const { query } = useRouter();
-  const { search: searchValueQuery = '', page: pageQuery = '1' } =
-    query as Record<string, string>;
+  const {
+    search: searchValueQuery = DEFAULT_BLANK_VALUE,
+    page: pageQuery = DEFAULT_PAGE_VALUE,
+  } = query as Record<string, string>;
 
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(DEFAULT_BLANK_VALUE);
   const { queryParams, updateQueryParams } = useQueryParams({
     search: searchValueQuery,
     page: pageQuery,
@@ -37,11 +41,11 @@ const SearchResults = ({ moviesRes }: Props) => {
 
     const queryParams = {
       search: searchValue.trim(),
-      page: '1',
+      page: DEFAULT_PAGE_VALUE,
     };
 
     updateQueryParams(queryParams);
-    setSearchValue('');
+    setSearchValue(DEFAULT_BLANK_VALUE);
   };
 
   const handlePageChange = (_: any, page: number) => {
