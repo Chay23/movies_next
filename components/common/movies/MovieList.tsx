@@ -3,10 +3,8 @@ import type { ChangeEvent } from 'react';
 import { memo } from 'react';
 import { Pagination } from '@mui/material';
 
-import MovieCreationIcon from '@mui/icons-material/MovieCreation';
-import SearchIcon from '@mui/icons-material/Search';
-
-import ExtendedMovie from './ExtendedMovie';
+import Movie from './Movie';
+import NoResultsFound from './NoResultsFound';
 
 type Props = {
   movies: movie.Movie[];
@@ -26,7 +24,7 @@ const ExtendedMovieList = ({
       <article>
         <div className='grid grid-cols-5 gap-10'>
           {movies.map(movie => (
-            <ExtendedMovie key={movie.id} movie={movie} />
+            <Movie key={movie.id} movie={movie} />
           ))}
         </div>
         <div className='flex items-center justify-center pt-20'>
@@ -41,18 +39,7 @@ const ExtendedMovieList = ({
     );
   }
 
-  return (
-    <article className='flex flex-col justify-center items-center pt-40'>
-      <div className='relative'>
-        <MovieCreationIcon
-          fontSize='large'
-          className='scale-150 absolute -top-7 -left-7 text-gray-700'
-        />
-        <SearchIcon className='scale-[10] text-gray-700' />
-      </div>
-      <h3 className='py-24'>No Results Found</h3>
-    </article>
-  );
+  return <NoResultsFound />;
 };
 
 export default memo(ExtendedMovieList);
