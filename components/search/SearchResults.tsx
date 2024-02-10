@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQueryParams } from '@/hooks/useSearchParams';
 
-import Spinner from '../common/spinner/Spinner';
-import ExtendedMovieList from '../common/movies/ExtendedMovieList';
+import MovieList from '../common/movies/MovieList';
+import MovieListContainer from '../common/movies/MovieListContainer';
+
 import SearchForm from './SearchForm';
 
 import { DEFAULT_BLANK_VALUE, DEFAULT_PAGE_VALUE } from '@/utils/constants';
@@ -28,7 +29,11 @@ const SearchResults = ({ moviesRes }: Props) => {
     page: pageQuery,
   });
 
-  const { data: movies, isLoading } = useSWR(`/movies/search?${queryParams}`, {
+  const {
+    data: movies,
+    error,
+    isLoading,
+  } = useSWR(`/movies/search?${queryParams}`, {
     fallbackData: moviesRes,
   });
 
@@ -69,18 +74,14 @@ const SearchResults = ({ moviesRes }: Props) => {
             handleSearchSubmit={handleSearchSubmit}
           />
         </div>
-        {isLoading ? (
-          <div className='aspect-3/1 flex justify-center items-center'>
-            <Spinner />
-          </div>
-        ) : (
-          <ExtendedMovieList
+        <MovieListContainer isLoading={isLoading} error={error}>
+          <MovieList
             movies={movies.results}
             page={parseInt(pageQuery)}
             pages={movies.total_pages}
             handlePageChange={handlePageChange}
           />
-        )}
+        </MovieListContainer>
       </section>
     );
   }

@@ -4,8 +4,9 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { useQueryParams } from '@/hooks/useSearchParams';
 
-import ExtendedMovieList from '../common/movies/ExtendedMovieList';
-import Spinner from '../common/spinner/Spinner';
+import MovieList from '../common/movies/MovieList';
+import MovieListContainer from '../common/movies/MovieListContainer';
+
 import Filters from './Filters';
 
 import {
@@ -38,7 +39,7 @@ const Discover = ({ movieList, movieGenres }: Props) => {
     sort_by: querySortOption,
   });
 
-  const { data, isLoading } = useSWR(`/movies/discover?${queryParams}`, {
+  const { data, error, isLoading } = useSWR(`/movies/discover?${queryParams}`, {
     fallbackData: movieList,
   });
 
@@ -94,20 +95,14 @@ const Discover = ({ movieList, movieGenres }: Props) => {
             handleSortOptionChange={handleSortOptionChange}
             handleGenreSelect={handleGenreSelect}
           />
-          {isLoading ? (
-            <div className='flex justify-center items-center'>
-              <Spinner />
-            </div>
-          ) : (
-            <>
-              <ExtendedMovieList
-                movies={data.results}
-                page={parseInt(queryPage)}
-                pages={data.total_pages}
-                handlePageChange={handlePageChange}
-              />
-            </>
-          )}
+          <MovieListContainer isLoading={isLoading} error={error}>
+            <MovieList
+              movies={data.results}
+              page={parseInt(queryPage)}
+              pages={data.total_pages}
+              handlePageChange={handlePageChange}
+            />
+          </MovieListContainer>
         </div>
       </section>
     );

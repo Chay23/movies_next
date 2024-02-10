@@ -16,7 +16,6 @@ export const fetcher = async <T>(url: string, ...args: [any]): Promise<T> => {
     error.status = res.status;
     throw error;
   }
-
   return json;
 };
 
@@ -24,10 +23,25 @@ export const SWRFetcher = async <T>(
   url: string,
   ...args: [any]
 ): Promise<T> => {
-  return await fetcher<T>(
-    `${process.env.NEXT_PUBLIC_INTERNAL_API_URL}${url}`,
-    ...args
-  );
+  let response;
+  try {
+    response = await fetcher<T>(
+      `${process.env.NEXT_PUBLIC_INTERNAL_API_URL}${url}`,
+      ...args
+    );
+    return response;
+  } catch (e) {
+    if (e instanceof Object) {
+      if ('info' in e) {
+        throw e;
+      }
+    }
+    const error = new Error('No internet connection.') as api.FetchError;
+    error.info = {
+      status_message: 'Check your internet connection and try again.',
+    };
+    throw error;
+  }
 };
 
 export const getData = async <T>(

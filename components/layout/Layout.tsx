@@ -15,7 +15,7 @@ const Layout = ({ children, px = true, py = true }: LayoutProps) => {
     <>
       <Navbar font={roboto} />
       <main
-        className={`relative ${px ? 'px-40' : ''} ${py ? 'py-40' : ''} ${
+        className={`relative ${px ? 'px-40' : ''} ${py ? 'pt-40 pb-12' : ''} ${
           roboto.className
         }`}>
         {children}
