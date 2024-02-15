@@ -22,17 +22,42 @@ const MovieCarousel = ({ movies }: Props) => {
   return (
     <div className='relative'>
       <Swiper
-        slidesPerView={10}
+        slidesPerView={2}
         grid={{
           rows: 1,
         }}
-        spaceBetween={20}
+        breakpoints={{
+          100: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          450: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 5,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 8,
+            spaceBetween: 20,
+          },
+          1440: {
+            slidesPerView: 10,
+            spaceBetween: 20,
+          },
+        }}
+        spaceBetween={10}
         navigation={{
           prevEl: '.swiper-arrow-prev',
           nextEl: 'swiper-arrow-next',
         }}
         modules={[Grid, Navigation]}
-        slidesPerGroup={10}
         loop
         onSwiper={it => (swiperRef.current = it)}>
         {movies.map(movie => (

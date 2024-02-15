@@ -89,7 +89,7 @@ export default function Home({
         <title>Home Page</title>
       </Head>
       <TrendingMovies moviesRes={trendingMoviesRes} />
-      <div className='px-40 py-20'>
+      <div className='px-10 md:px-14 xl:px-40 py-2 xl:py-20'>
         <NowPlaying moviesRes={nowPlayingMoviesRes} />
         <PopularMovies moviesRes={popularMoviesRes} />
       </div>
