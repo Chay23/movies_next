@@ -3,7 +3,7 @@ import type { ChangeEvent, FormEvent } from 'react';
 import useSWR from 'swr';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useQueryParams } from '@/hooks/useSearchParams';
+import { useQueryParams } from '@/hooks/useQueryParams';
 
 import MovieList from '../common/movies/MovieList';
 import MovieListContainer from '../common/movies/MovieListContainer';
