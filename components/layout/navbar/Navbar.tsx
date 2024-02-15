@@ -1,52 +1,21 @@
-import type { NextFont } from 'next/dist/compiled/@next/font';
-import type { ChangeEvent, FormEvent } from 'react';
+import { Roboto } from 'next/font/google';
 
-import { useState } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import MenuItems from './MenuItems';
+import DesktopMenu from './desktop/DesktopMenu';
+import MobileMenu from './mobile/MobileMenu';
 
-import { menuItems } from './constants';
-import { DEFAULT_BLANK_VALUE, DEFAULT_PAGE_VALUE } from '@/utils/constants';
+const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 
-type NavbarProps = {
-  font: NextFont;
-};
-
-const Navbar = ({ font }: NavbarProps) => {
-  const [searchValue, setSearchValue] = useState(DEFAULT_BLANK_VALUE);
-  const router = useRouter();
-
-  const handleSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
-
-  const handleSearchSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSearchValue(DEFAULT_BLANK_VALUE);
-    router.push(
-      `/movies/search?search=${searchValue}&page=${DEFAULT_PAGE_VALUE}`
-    );
-  };
-
+const Navbar = () => {
   return (
     <nav
-      className={`fixed w-full z-50 flex items-center justify-between h-16 px-16 bg-gray-800 text-slate-100 ${font.className}`}>
+      className={`fixed w-full z-50 flex items-center justify-between h-16 px-12 xl:px-16 bg-gray-800 text-slate-100 ${roboto.className}`}>
       <Link href={'/'}>
         <h2>Movies</h2>
       </Link>
-
-      <MenuItems items={menuItems}>
-        <form onSubmit={handleSearchSubmit} className='self-center'>
-          <input
-            placeholder='Search'
-            value={searchValue}
-            onChange={handleSearchValueChange}
-            className='rounded-lg p-1 text-black'
-          />
-        </form>
-      </MenuItems>
+      <DesktopMenu />
+      <MobileMenu />
     </nav>
   );
 };

@@ -10,9 +10,9 @@ type Props = {
 
 const MenuItem = ({ item }: Props) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const router = useRouter();
+  const {pathname} = useRouter();
 
-  const activeLink = router.pathname.match(item.url);
+  const activeLink = pathname.match(item.url);
 
   const handleShowDropdown = () => {
     setShowDropdown(true);
@@ -24,9 +24,11 @@ const MenuItem = ({ item }: Props) => {
 
   if (item.submenu) {
     return (
-      <div className='relative'>
+      <li className='relative'>
         <button
-          className={`h-full nav-link-styling ${activeLink ? 'after:h-1' : 'after:h-0'}`}
+          className={`h-full nav-link-styling ${
+            activeLink ? 'after:h-1' : 'after:h-0'
+          }`}
           onMouseEnter={handleShowDropdown}
           onMouseLeave={handleCloseDropdown}>
           {item.title}
@@ -37,18 +39,20 @@ const MenuItem = ({ item }: Props) => {
           handleShowDropdown={handleShowDropdown}
           handleCloseDropdown={handleCloseDropdown}
         />
-      </div>
+      </li>
     );
   }
 
   return (
-    <div className='h-full relative'>
+    <li className='h-full relative'>
       <Link
         href={item.url}
-        className={`flex items-center h-full nav-link-styling after:hover:h-1 ${activeLink ? 'after:h-1' : 'after:h-0'}`}>
+        className={`flex items-center h-full nav-link-styling after:hover:h-1 ${
+          activeLink ? 'after:h-1' : 'after:h-0'
+        }`}>
         {item.title}
       </Link>
-    </div>
+    </li>
   );
 };
 

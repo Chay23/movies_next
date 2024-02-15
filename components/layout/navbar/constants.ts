@@ -35,7 +35,10 @@ export const menuItems: navbar.MenuItem[] = [
       {
         key: 'popular',
         title: 'Popular',
-        href: 'popular',
+        href: {
+          pathname: '/series/[list]',
+          query: { list: 'popular' },
+        },
       },
     ],
   },
