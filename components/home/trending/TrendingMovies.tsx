@@ -22,7 +22,7 @@ const TrendingMovies = ({ moviesRes }: Props) => {
         loop
         modules={[Navigation]}>
         {moviesRes.results.map(movie => (
-          <SwiperSlide key={movie.id}>
+          <SwiperSlide key={movie.id} style={{ height: 'auto' }}>
             <TrendingMovie movie={movie} />
           </SwiperSlide>
         ))}

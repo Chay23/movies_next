@@ -7,7 +7,7 @@ type PopularMoviesProps = {
 const PopularMovies = ({ moviesRes }: PopularMoviesProps) => {
   return (
     <section className=''>
-      <h1 className='my-12'>Popular</h1>
+      <h1 className='my-8'>Popular</h1>
       <MovieCarousel movies={moviesRes.results} />
     </section>
   );
