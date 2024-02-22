@@ -34,22 +34,3 @@ namespace movie {
   };
 }
 
-namespace navbar {
-  type SubMenuItem = {
-    key: string;
-    title: string;
-    href:
-      | string
-      | {
-          pathname: string;
-          query: Record<string, string>;
-        };
-  };
-
-  type MenuItem = {
-    title: string;
-    url: string;
-    submenu?: SubMenuItem[];
-  };
-}
-

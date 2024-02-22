@@ -1,3 +1,5 @@
+import type { navbar } from '@/typings/navbar';
+
 import { useEffect, useState } from 'react';
 
 import CollapsibleTitle from './CollapsibleTitle';

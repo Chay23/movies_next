@@ -1,3 +1,5 @@
+import type { navbar } from '@/typings/navbar';
+
 import { DEFAULT_PAGE_VALUE, DEFAULT_SORT_VALUE } from '@/utils/constants';
 
 export const menuItems: navbar.MenuItem[] = [
