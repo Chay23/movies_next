@@ -6,7 +6,7 @@ type NowPlayingMoviesProps = {
 
 const NowPlaying = ({ moviesRes }: NowPlayingMoviesProps) => {
   return (
-    <section className=''>
+    <section>
       <h1 className='my-8'>Now Playing</h1>
       <MovieCarousel movies={moviesRes.results} />
     </section>
