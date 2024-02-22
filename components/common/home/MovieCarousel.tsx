@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Grid, Navigation } from 'swiper/modules';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -23,9 +22,6 @@ const MovieCarousel = ({ movies }: Props) => {
     <div className='relative'>
       <Swiper
         slidesPerView={2}
-        grid={{
-          rows: 1,
-        }}
         breakpoints={{
           100: {
             slidesPerView: 2,
@@ -53,11 +49,6 @@ const MovieCarousel = ({ movies }: Props) => {
           },
         }}
         spaceBetween={10}
-        navigation={{
-          prevEl: '.swiper-arrow-prev',
-          nextEl: 'swiper-arrow-next',
-        }}
-        modules={[Grid, Navigation]}
         loop
         onSwiper={it => (swiperRef.current = it)}>
         {movies.map(movie => (
