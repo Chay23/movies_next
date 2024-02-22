@@ -1,3 +1,5 @@
+import type { filters } from '@/typings/movie/movieFilters';
+
 import { sortOptions } from './constants';
 
 export const getSelectedSortOption = (value: string): filters.SortOption => {

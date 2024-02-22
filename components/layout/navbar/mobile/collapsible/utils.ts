@@ -1,3 +1,4 @@
+import type { navbar } from '@/typings/navbar';
 import type { NextRouter } from 'next/router';
 
 export const matchesPath = (router: NextRouter, item: navbar.SubMenuItem) => {

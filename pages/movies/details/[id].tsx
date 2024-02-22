@@ -1,10 +1,11 @@
+import type { GetServerSideProps } from 'next';
+import type { movie } from '@/typings/movie/movie';
+
 import Movie from '@/components/movie/Movie';
 
 import { getData } from '@/services/api';
 
 import { SERVER_ERROR_OBJECT } from '@/utils/constants';
-
-import type { GetServerSideProps } from 'next';
 
 export const getServerSideProps = (async context => {
   try {

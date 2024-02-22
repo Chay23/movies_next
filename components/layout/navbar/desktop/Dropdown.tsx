@@ -1,3 +1,5 @@
+import type { navbar } from '@/typings/navbar';
+
 import Link from 'next/link';
 
 type Props = {

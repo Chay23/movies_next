@@ -1,4 +1,6 @@
 import type { ChangeEvent, FormEvent } from 'react';
+import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
 
 import useSWR from 'swr';
 import { useState } from 'react';
@@ -13,7 +15,7 @@ import SearchForm from './SearchForm';
 import { DEFAULT_BLANK_VALUE, DEFAULT_PAGE_VALUE } from '@/utils/constants';
 
 type Props = {
-  moviesRes: movie.MovieList;
+  moviesRes: api.PaginatedResponse<movie.Movie>;
 };
 
 const SearchResults = ({ moviesRes }: Props) => {

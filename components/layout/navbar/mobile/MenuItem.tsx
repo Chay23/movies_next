@@ -1,3 +1,5 @@
+import type { navbar } from '@/typings/navbar';
+
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 

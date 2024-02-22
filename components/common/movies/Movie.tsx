@@ -1,6 +1,9 @@
+import type { movie } from '@/typings/movie/movie';
+
 import Link from 'next/link';
 
 import MovieImage from '../image/MovieImage';
+
 import { DEFAULT_BLANK_VALUE } from '@/utils/constants';
 
 type Props = {

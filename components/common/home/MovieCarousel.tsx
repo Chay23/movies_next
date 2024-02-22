@@ -1,15 +1,16 @@
+import 'swiper/css';
+import 'swiper/css/grid';
+import 'swiper/css/pagination';
+
+import type { movie } from '@/typings/movie/movie';
+
 import { useRef } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import MovieCarouselItem from './MovieCarouselItem';
-
-import 'swiper/css';
-import 'swiper/css/grid';
-import 'swiper/css/pagination';
 
 type Props = {
   movies: movie.Movie[];

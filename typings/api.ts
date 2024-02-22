@@ -1,4 +1,12 @@
+import type { movie } from './movie/movie';
+
 export namespace api {
+  export type PaginatedResponse<T> = {
+    page: number;
+    results: T[];
+    total_pages: number;
+  };
+
   export type FetchError = Error & {
     info: Record<string, string | number | boolean>;
     status: number;

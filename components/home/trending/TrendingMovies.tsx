@@ -1,14 +1,17 @@
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
 import TrendingMovie from './TrendingMovie';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 type Props = {
-  moviesRes: movie.MovieList;
+  moviesRes: api.PaginatedResponse<movie.Movie>;
 };
 
 const TrendingMovies = ({ moviesRes }: Props) => {

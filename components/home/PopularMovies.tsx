@@ -1,7 +1,10 @@
+import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
+
 import MovieCarousel from '@/components/common/home/MovieCarousel';
 
 type PopularMoviesProps = {
-  moviesRes: movie.MovieList;
+  moviesRes: api.PaginatedResponse<movie.Movie>;
 };
 
 const PopularMovies = ({ moviesRes }: PopularMoviesProps) => {

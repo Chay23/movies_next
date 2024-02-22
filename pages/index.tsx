@@ -1,5 +1,7 @@
 import type { GetStaticProps } from 'next';
 import type { ReactElement } from 'react';
+import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
 
 import { getData } from '@/services/api';
 
@@ -25,7 +27,7 @@ export const getStaticProps = (async () => {
     const [popularMoviesRes, nowPlayingMoviesRes, trendingMoviesRes] =
       await Promise.all(
         endpoints.map(async endpoint => {
-          return await getData<movie.MovieList>(
+          return await getData<api.PaginatedResponse<movie.Movie>>(
             endpoint.recource,
             endpoint.options
           );
@@ -73,9 +75,9 @@ export const getStaticProps = (async () => {
 }) satisfies GetStaticProps;
 
 type HomeProps = {
-  popularMoviesRes: movie.MovieList;
-  nowPlayingMoviesRes: movie.MovieList;
-  trendingMoviesRes: movie.MovieList;
+  popularMoviesRes: api.PaginatedResponse<movie.Movie>;
+  nowPlayingMoviesRes: api.PaginatedResponse<movie.Movie>;
+  trendingMoviesRes: api.PaginatedResponse<movie.Movie>;
 };
 
 export default function Home({
