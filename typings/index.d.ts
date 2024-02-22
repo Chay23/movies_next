@@ -53,10 +53,3 @@ namespace navbar {
   };
 }
 
-namespace filters {
-  type SortOption = { value: string; label: string };
-
-  type GenreList = (movie.Genre & {
-    selected?: boolean;
-  })[];
-}

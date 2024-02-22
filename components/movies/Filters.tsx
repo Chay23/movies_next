@@ -1,4 +1,5 @@
 import type { MouseEvent } from 'react';
+import type { filters } from '@/typings/movie/movieFilters';
 
 import { useId } from 'react';
 import Select from 'react-select';

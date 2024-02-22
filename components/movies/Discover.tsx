@@ -1,4 +1,5 @@
 import type { MouseEvent } from 'react';
+import type { filters } from '@/typings/movie/movieFilters';
 
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
