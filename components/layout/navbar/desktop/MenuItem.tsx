@@ -1,7 +1,8 @@
 import type { navbar } from '@/typings/navbar';
 
-import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useBoolean } from '@/hooks/useBoolean';
+
 import Link from 'next/link';
 
 import Dropdown from './Dropdown';
@@ -11,18 +12,14 @@ type Props = {
 };
 
 const MenuItem = ({ item }: Props) => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const {pathname} = useRouter();
+  const {
+    value: showDropdown,
+    setTrue: handleShowDropdown,
+    setFalse: handleCloseDropdown,
+  } = useBoolean(false);
+  const { pathname } = useRouter();
 
   const activeLink = pathname.match(item.url);
-
-  const handleShowDropdown = () => {
-    setShowDropdown(true);
-  };
-
-  const handleCloseDropdown = () => {
-    setShowDropdown(false);
-  };
 
   if (item.submenu) {
     return (
