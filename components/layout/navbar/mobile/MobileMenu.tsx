@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useBoolean } from '@/hooks/useBoolean';
 
 import MenuItems from './MenuItems';
 
@@ -7,20 +8,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 const MobileMenu = () => {
-  const [menu, setMenu] = useState(false);
+  const { value: menu, setFalse, toggle } = useBoolean(false);
   const router = useRouter();
 
   useEffect(() => {
-    router.events.on('routeChangeStart', () => setMenu(false));
-  }, [router.events]);
-
-  const handleToggleNav = () => {
-    setMenu(prevVal => !prevVal);
-  };
+    router.events.on('routeChangeStart', () => setFalse());
+  }, [router.events, setFalse]);
 
   return (
     <>
-      <div className='md:hidden' onClick={handleToggleNav}>
+      <div className='md:hidden' onClick={toggle}>
         {menu ? <CloseIcon /> : <MenuIcon />}
       </div>
       <MenuItems menuOpen={menu} />

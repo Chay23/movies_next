@@ -1,6 +1,7 @@
 import type { navbar } from '@/typings/navbar';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useBoolean } from '@/hooks/useBoolean';
 
 import CollapsibleTitle from './CollapsibleTitle';
 import CollapsibleMenu from './CollapsibleMenu';
@@ -11,30 +12,18 @@ type Props = {
 };
 
 const Collapsible = ({ item, menuOpen }: Props) => {
-  const [open, setOpen] = useState(false);
+  const { value: open, toggle, setFalse } = useBoolean(false);
 
   useEffect(() => {
     if (!menuOpen) {
-      setOpen(false);
+      setFalse();
     }
-  }, [menuOpen]);
-
-  const handleToggleOpen = () => {
-    setOpen(prevState => !prevState);
-  };
+  }, [menuOpen, setFalse]);
 
   return (
     <li>
-      <CollapsibleTitle
-        open={open}
-        item={item}
-        handleToggleOpen={handleToggleOpen}
-      />
-      <CollapsibleMenu
-        open={open}
-        item={item}
-        handleToggleOpen={handleToggleOpen}
-      />
+      <CollapsibleTitle open={open} item={item} handleToggleOpen={toggle} />
+      <CollapsibleMenu open={open} item={item} handleToggleOpen={toggle} />
     </li>
   );
 };
