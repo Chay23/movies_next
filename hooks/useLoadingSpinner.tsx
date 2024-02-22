@@ -4,26 +4,22 @@ import { useEffect, useState } from 'react';
 export const useLoadingSpinner = () => {
   const [isLoading, setLoading] = useState(false);
 
-  const handleStartLoading = (_: any, { shallow }: { shallow: boolean }) => {
-    if (!shallow) {
-      setLoading(true);
-    }
-  };
-
-  const handleStopLoading = (_: any, { shallow }: { shallow: boolean }) => {
-    if (!shallow) {
-      setLoading(false);
-    }
+  const handleLoading = (value: boolean) => {
+    return (_: any, { shallow }: { shallow: boolean }) => {
+      if (!shallow) {
+        setLoading(value);
+      }
+    };
   };
 
   useEffect(() => {
-    Router.events.on('routeChangeStart', handleStartLoading);
-    Router.events.on('routeChangeComplete', handleStopLoading);
-    Router.events.on('routeChangeError', handleStopLoading);
+    Router.events.on('routeChangeStart', handleLoading(true));
+    Router.events.on('routeChangeComplete', handleLoading(false));
+    Router.events.on('routeChangeError', handleLoading(false));
     return () => {
-      Router.events.off('routeChangeStart', handleStartLoading);
-      Router.events.off('routeChangeComplete', handleStopLoading);
-      Router.events.off('routeChangeError', handleStopLoading);
+      Router.events.off('routeChangeStart', handleLoading(true));
+      Router.events.off('routeChangeComplete', handleLoading(false));
+      Router.events.off('routeChangeError', handleLoading(false));
     };
   });
 
