@@ -1,4 +1,5 @@
 import type { ChangeEvent } from 'react';
+import type { movie } from '@/typings/movie/movie';
 
 import { memo } from 'react';
 import { Pagination } from '@mui/material';

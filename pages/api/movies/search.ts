@@ -1,4 +1,5 @@
 import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
 
 import { getData } from '@/services/api';
 
@@ -10,7 +11,7 @@ import {
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-type HandlerResponse = movie.MovieList | api.ErrorInfo;
+type HandlerResponse = api.PaginatedResponse<movie.Movie> | api.ErrorInfo;
 
 export default async function handler(
   req: NextApiRequest,
@@ -20,10 +21,13 @@ export default async function handler(
     try {
       const { search, page } = req.query as Record<string, string | undefined>;
 
-      const response = await getData<movie.MovieList>('/search/movie', {
-        query: search || DEFAULT_BLANK_VALUE,
-        page: page || DEFAULT_PAGE_VALUE,
-      });
+      const response = await getData<api.PaginatedResponse<movie.Movie>>(
+        '/search/movie',
+        {
+          query: search || DEFAULT_BLANK_VALUE,
+          page: page || DEFAULT_PAGE_VALUE,
+        }
+      );
 
       if (response.error) {
         return res.status(response.status).json(response.info);

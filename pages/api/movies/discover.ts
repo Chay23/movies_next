@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
 
 import { getData } from '@/services/api';
 
@@ -9,7 +10,7 @@ import {
   SERVER_ERROR_OBJECT,
 } from '@/utils/constants';
 
-type HandlerResponse = movie.MovieList | api.ErrorInfo;
+type HandlerResponse = api.PaginatedResponse<movie.Movie> | api.ErrorInfo;
 
 export default async function handler(
   req: NextApiRequest,
@@ -28,7 +29,7 @@ export default async function handler(
         page: page || DEFAULT_PAGE_VALUE,
       };
 
-      const response = await getData<movie.MovieList>(
+      const response = await getData<api.PaginatedResponse<movie.Movie>>(
         '/discover/movie',
         queryParams
       );

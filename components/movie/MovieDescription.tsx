@@ -1,3 +1,5 @@
+import type { movie } from '@/typings/movie/movie';
+
 type MovieDescriptionProps = {
   movie: movie.Movie;
 };

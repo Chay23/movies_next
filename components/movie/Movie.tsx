@@ -1,3 +1,5 @@
+import type { movie } from '@/typings/movie/movie';
+
 import MovieDescription from './MovieDescription';
 import MovieImage from '../common/image/MovieImage';
 

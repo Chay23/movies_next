@@ -1,4 +1,6 @@
 import type { GetServerSideProps } from 'next';
+import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
 
 import { getData } from '@/services/api';
 
@@ -23,7 +25,10 @@ export const getServerSideProps = (async context => {
       page: page || DEFAULT_PAGE_VALUE,
     };
 
-    const res = await getData<movie.MovieList>('/search/movie', queryParams);
+    const res = await getData<api.PaginatedResponse<movie.Movie>>(
+      '/search/movie',
+      queryParams
+    );
 
     if (res.error) {
       return {
@@ -45,7 +50,7 @@ export const getServerSideProps = (async context => {
 }) satisfies GetServerSideProps;
 
 type SearchPageProps = {
-  moviesRes: movie.MovieList;
+  moviesRes: api.PaginatedResponse<movie.Movie>;
 };
 
 const SearchPage = ({ moviesRes }: SearchPageProps) => {

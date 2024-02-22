@@ -1,3 +1,5 @@
+import type { movie } from '@/typings/movie/movie';
+
 import Link from 'next/link';
 
 type Props = {

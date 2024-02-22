@@ -1,5 +1,7 @@
 import type { MouseEvent } from 'react';
 import type { filters } from '@/typings/movie/movieFilters';
+import type { api } from '@/typings/api';
+import type { movie } from '@/typings/movie/movie';
 
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
@@ -19,7 +21,7 @@ import {
 import { DEFAULT_PAGE_VALUE, DEFAULT_SORT_VALUE } from '@/utils/constants';
 
 type Props = {
-  movieList: movie.MovieList;
+  movieList: api.PaginatedResponse<movie.Movie>;
   movieGenres: filters.GenreList;
 };
 
