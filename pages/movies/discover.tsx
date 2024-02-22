@@ -5,7 +5,7 @@ import type { movie } from '@/typings/movie/movie';
 import { getData } from '@/services/api';
 
 import Head from 'next/head';
-import Discover from '@/components/movies/Discover';
+import Discover from '@/components/discover/Discover';
 
 import {
   DEFAULT_PAGE_VALUE,
