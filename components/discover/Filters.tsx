@@ -2,29 +2,62 @@ import type { MouseEvent } from 'react';
 import type { filters } from '@/typings/movie/movieFilters';
 
 import { useId } from 'react';
-import Select from 'react-select';
+import { useDiscoveryQueryParams } from '@/hooks/useDiscoveryQueryParams';
 
+import Select from 'react-select';
 import FilterItem from './FilterItem';
 
 import { sortOptions } from './constants';
+import { DEFAULT_PAGE_VALUE } from '@/utils/constants';
+
+import {
+  addGenreToQuery,
+  getSelectedSortOption,
+  markSelectedGenreOptions,
+  removeGenreFromQuery,
+} from './utils';
 
 type Props = {
   movieGenres: filters.GenreList;
-  sortOption: filters.SortOption;
-  handleSortOptionChange: (option: filters.SortOption | null) => void;
-  handleGenreSelect: (
-    e: MouseEvent<HTMLButtonElement>,
-    remove: boolean
-  ) => void;
 };
 
-const Filters = ({
-  movieGenres,
-  sortOption,
-  handleSortOptionChange,
-  handleGenreSelect,
-}: Props) => {
+const Filters = ({ movieGenres }: Props) => {
   const id = useId();
+  const { queryPage, queryGenres, querySortOption, updateQueryParams } =
+    useDiscoveryQueryParams();
+
+  const sortOption = getSelectedSortOption(querySortOption);
+  const genres = markSelectedGenreOptions(movieGenres, queryGenres);
+
+  const handleSortOptionChange = (option: filters.SortOption | null) => {
+    if (option) {
+      const queryParams = {
+        sort_by: option.value,
+        page: queryPage,
+        ...(queryGenres && { with_genres: queryGenres }),
+      };
+
+      updateQueryParams(queryParams);
+    }
+  };
+
+  const handleGenreSelect = (
+    e: MouseEvent<HTMLButtonElement>,
+    removeGenre: boolean
+  ) => {
+    const selectedGenre = e.currentTarget.getAttribute('name') as string;
+    const updatedQueryGenres = removeGenre
+      ? addGenreToQuery(queryGenres, selectedGenre)
+      : removeGenreFromQuery(queryGenres, selectedGenre);
+
+    const queryParams = {
+      sort_by: querySortOption,
+      page: DEFAULT_PAGE_VALUE,
+      ...(updatedQueryGenres && { with_genres: updatedQueryGenres }),
+    };
+
+    updateQueryParams(queryParams);
+  };
 
   return (
     <aside className='p-5 border border-gray-200 shadow-xl rounded-2xl h-fit'>
@@ -40,7 +73,7 @@ const Filters = ({
       </FilterItem>
       <FilterItem title='Genre'>
         <ul className='flex flex-wrap gap-3'>
-          {movieGenres.map(genre => (
+          {genres.map(genre => (
             <li key={genre.id}>
               <button
                 className={`py-1 px-2 border border-gray-300 rounded-lg${

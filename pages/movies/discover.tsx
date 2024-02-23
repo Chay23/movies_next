@@ -50,7 +50,7 @@ export const getServerSideProps = (async context => {
 
     return {
       props: {
-        movieList: moviesRes.data,
+        moviesRes: moviesRes.data,
         movieGenres: movieGenresRes.data.genres,
       },
     };
@@ -63,17 +63,17 @@ export const getServerSideProps = (async context => {
 }) satisfies GetServerSideProps;
 
 type Props = {
-  movieList: api.PaginatedResponse<movie.Movie>;
+  moviesRes: api.PaginatedResponse<movie.Movie>;
   movieGenres: movie.Genre[];
 };
 
-const DiscoverPage = ({ movieList, movieGenres }: Props) => {
+const DiscoverPage = ({ moviesRes, movieGenres }: Props) => {
   return (
     <>
       <Head>
         <title>Discover</title>
       </Head>
-      <Discover movieList={movieList} movieGenres={movieGenres} />
+      <Discover moviesRes={moviesRes} movieGenres={movieGenres} />
     </>
   );
 };
