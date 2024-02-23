@@ -40,6 +40,7 @@ const Discover = ({ movieList, movieGenres }: Props) => {
   const { queryParams, updateQueryParams } = useQueryParams({
     page: queryPage,
     sort_by: querySortOption,
+    ...(queryGenres && { with_genres: queryGenres }),
   });
 
   const { data, error, isLoading } = useSWR(`/movies/discover?${queryParams}`, {
@@ -70,7 +71,7 @@ const Discover = ({ movieList, movieGenres }: Props) => {
     const queryParams = {
       sort_by: querySortOption,
       ...(updatedQueryGenres && { with_genres: updatedQueryGenres }),
-      page: queryPage,
+      page: DEFAULT_PAGE_VALUE,
     };
 
     updateQueryParams(queryParams);
@@ -87,29 +88,27 @@ const Discover = ({ movieList, movieGenres }: Props) => {
     window.scrollTo(0, 0);
   };
 
-  if (data) {
-    return (
-      <section>
-        <h1 className='mb-12'>Discover</h1>
-        <div className='grid grid-cols-1/4 gap-7'>
-          <Filters
-            movieGenres={genres}
-            sortOption={selectedSortOption}
-            handleSortOptionChange={handleSortOptionChange}
-            handleGenreSelect={handleGenreSelect}
+  return (
+    <section>
+      <h1 className='mb-12'>Discover</h1>
+      <div className='grid grid-cols-1/4 gap-7'>
+        <Filters
+          movieGenres={genres}
+          sortOption={selectedSortOption}
+          handleSortOptionChange={handleSortOptionChange}
+          handleGenreSelect={handleGenreSelect}
+        />
+        <MovieListContainer isLoading={isLoading} error={error}>
+          <MovieList
+            movies={data.results}
+            page={parseInt(queryPage)}
+            pages={data.total_pages}
+            handlePageChange={handlePageChange}
           />
-          <MovieListContainer isLoading={isLoading} error={error}>
-            <MovieList
-              movies={data.results}
-              page={parseInt(queryPage)}
-              pages={data.total_pages}
-              handlePageChange={handlePageChange}
-            />
-          </MovieListContainer>
-        </div>
-      </section>
-    );
-  }
+        </MovieListContainer>
+      </div>
+    </section>
+  );
 };
 
 export default Discover;
