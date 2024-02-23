@@ -4,6 +4,7 @@
 
 html {
   color: #212427;
+  overflow-y: scroll;
 }
 
 :root {
