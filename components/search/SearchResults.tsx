@@ -68,8 +68,8 @@ const SearchResults = ({ moviesRes }: Props) => {
   if (movies) {
     return (
       <section>
-        <div className='flex justify-between gap-2 mb-12'>
-          <h1>{`Search Results for "${searchValueQuery}"`}</h1>
+        <div className='flex flex-col justify-between gap-4 xl:gap-5 mb-12'>
+          <h2>{`Results for "${searchValueQuery}"`}</h2>
           <SearchForm
             searchValue={searchValue}
             handleSearchValueChange={handleSearchValueChange}

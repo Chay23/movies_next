@@ -21,7 +21,7 @@ const ExtendedMovie = ({ movie }: Props) => {
           serverWidth={400}
           fill
           alt='Movie poster'
-          sizes='(max-width: 768px) 5vw, (max-width: 1200px) 10vw, 30vw'
+          sizes='(max-width: 768px) 15vw, (max-width: 1200px) 25vw, 30vw'
           style={{ objectFit: 'cover' }}
         />
       </div>

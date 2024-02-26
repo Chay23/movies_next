@@ -23,12 +23,12 @@ const ExtendedMovieList = ({
   if (movies.length) {
     return (
       <article>
-        <div className='grid grid-cols-5 gap-10'>
+        <div className='grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5 xl:gap-7'>
           {movies.map(movie => (
             <Movie key={movie.id} movie={movie} />
           ))}
         </div>
-        <div className='flex items-center justify-center pt-20'>
+        <div className='flex items-center justify-center pt-10 xl:pt-20'>
           <Pagination
             page={page}
             // API has restriction for requested page to 500 but response can contain more than 500 pages
