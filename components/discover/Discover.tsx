@@ -2,8 +2,9 @@ import type { filters } from '@/typings/movie/movieFilters';
 import type { api } from '@/typings/api';
 import type { movie } from '@/typings/movie/movie';
 
-import Filters from './Filters';
 import Movies from './Movies';
+import MobileFilters from './filters/MobileFilters';
+import DesktopFilters from './filters/DesktopFilters';
 
 type Props = {
   moviesRes: api.PaginatedResponse<movie.Movie>;
@@ -13,9 +14,12 @@ type Props = {
 const Discover = ({ moviesRes, movieGenres }: Props) => {
   return (
     <section>
-      <h1 className='mb-12'>Discover</h1>
-      <div className='grid grid-cols-1/4 gap-7'>
-        <Filters movieGenres={movieGenres} />
+      <div className='flex justify-between items-center lg:block'>
+        <h1>Discover</h1>
+        <MobileFilters movieGenres={movieGenres} />
+      </div>
+      <div className='mt-5 lg:mt-12 md:grid md:grid-cols-1/2 xl:grid-cols-1/4 gap-7'>
+        <DesktopFilters movieGenres={movieGenres} />
         <Movies moviesRes={moviesRes} />
       </div>
     </section>
