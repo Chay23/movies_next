@@ -10,7 +10,7 @@ type Props = {
   movie: movie.Movie;
 };
 
-const ExtendedMovie = ({ movie }: Props) => {
+const Movie = ({ movie }: Props) => {
   const date = new Date(movie.release_date);
 
   return (
@@ -39,4 +39,4 @@ const ExtendedMovie = ({ movie }: Props) => {
   );
 };
 
-export default ExtendedMovie;
+export default Movie;
