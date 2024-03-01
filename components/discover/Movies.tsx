@@ -7,7 +7,6 @@ import { useDiscoveryQueryParams } from '@/hooks/useDiscoveryQueryParams';
 import MovieList from '../common/movies/MovieList';
 import MovieListContainer from '../common/movies/MovieListContainer';
 
-
 type Props = {
   moviesRes: api.PaginatedResponse<movie.Movie>;
 };
@@ -42,6 +41,7 @@ const Movies = ({ moviesRes }: Props) => {
         movies={data.results}
         page={parseInt(queryPage)}
         pages={data.total_pages}
+        listClasses='md:max-md:grid-cols-2'
         handlePageChange={handlePageChange}
       />
     </MovieListContainer>
