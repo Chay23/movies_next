@@ -16,8 +16,9 @@ const config: Config = {
         '3/1': '3 / 1',
       },
       gridTemplateColumns: {
-        '1/4': '1fr 4fr'
-      }
+        '1/4': '1fr 4fr',
+        '1/2': '1fr 2fr',
+      },
     },
   },
   plugins: [],
