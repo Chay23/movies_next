@@ -15,7 +15,7 @@ type Props = {
   handlePageChange: (event: ChangeEvent<unknown>, value: number) => void;
 };
 
-const ExtendedMovieList = ({
+const MovieList = ({
   movies,
   page,
   pages,
@@ -46,4 +46,4 @@ const ExtendedMovieList = ({
   return <NoResultsFound />;
 };
 
-export default memo(ExtendedMovieList);
+export default memo(MovieList);
