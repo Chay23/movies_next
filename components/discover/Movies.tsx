@@ -4,7 +4,6 @@ import type { movie } from '@/typings/movie/movie';
 import useSWR from 'swr';
 import { useDiscoveryQueryParams } from '@/hooks/useDiscoveryQueryParams';
 
-import MovieList from '../common/movies/MovieList';
 import MovieListContainer from '../common/movies/MovieListContainer';
 
 type Props = {
@@ -36,15 +35,15 @@ const Movies = ({ moviesRes }: Props) => {
   };
 
   return (
-    <MovieListContainer isLoading={isLoading} error={error}>
-      <MovieList
-        movies={data.results}
-        page={parseInt(queryPage)}
-        pages={data.total_pages}
-        listClasses='md:max-md:grid-cols-2'
-        handlePageChange={handlePageChange}
-      />
-    </MovieListContainer>
+    <MovieListContainer
+      isLoading={isLoading}
+      error={error}
+      movies={data.results}
+      page={parseInt(queryPage)}
+      pages={data.total_pages}
+      listClasses='md:max-lg:!grid-cols-2'
+      handlePageChange={handlePageChange}
+    />
   );
 };
 
