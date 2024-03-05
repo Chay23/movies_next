@@ -16,7 +16,7 @@ const Layout = ({ children, px = true, py = true }: LayoutProps) => {
       <Navbar />
       <main
         className={`relative ${px ? 'px-7 md:px-10 xl:px-40' : ''} ${
-          py ? 'pt-24 md:pt-32 xl:pt-40 pb-12' : ''
+          py ? 'pt-8 md:pt-12 xl:pt-20 pb-12' : ''
         } ${roboto.className}`}>
         {children}
       </main>
