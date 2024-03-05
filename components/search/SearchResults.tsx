@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQueryParams } from '@/hooks/useQueryParams';
 
-import MovieList from '../common/movies/MovieList';
 import MovieListContainer from '../common/movies/MovieListContainer';
 
 import SearchForm from './SearchForm';
@@ -34,7 +33,7 @@ const SearchResults = ({ moviesRes }: Props) => {
   const {
     data: movies,
     error,
-    isLoading,
+    isValidating,
   } = useSWR(`/movies/search?${queryParams}`, {
     fallbackData: moviesRes,
   });
@@ -76,14 +75,14 @@ const SearchResults = ({ moviesRes }: Props) => {
             handleSearchSubmit={handleSearchSubmit}
           />
         </div>
-        <MovieListContainer isLoading={isLoading} error={error}>
-          <MovieList
-            movies={movies.results}
-            page={parseInt(pageQuery)}
-            pages={movies.total_pages}
-            handlePageChange={handlePageChange}
-          />
-        </MovieListContainer>
+        <MovieListContainer
+          isLoading={isValidating}
+          error={error}
+          movies={movies.results}
+          page={parseInt(pageQuery)}
+          pages={movies.total_pages}
+          handlePageChange={handlePageChange}
+        />
       </section>
     );
   }
