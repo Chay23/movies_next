@@ -3,8 +3,8 @@ import type { movie } from '@/typings/movie/movie';
 import type { ChangeEvent, HTMLAttributes, ReactNode } from 'react';
 
 import Error from '@/components/error/Error';
-import Spinner from '../spinner/Spinner';
 import MovieList from './MovieList';
+import MovieListSkeleton from './skeleton/MovieListSkeleton';
 
 type Props = {
   isLoading: boolean;
@@ -31,11 +31,7 @@ const MovieListContainer = ({
   }
 
   if (isLoading) {
-    return (
-      <div className='flex justify-center items-center'>
-        <Spinner />
-      </div>
-    );
+    return <MovieListSkeleton listClasses={listClasses} />;
   }
 
   return (

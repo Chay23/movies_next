@@ -33,7 +33,7 @@ const SearchResults = ({ moviesRes }: Props) => {
   const {
     data: movies,
     error,
-    isLoading,
+    isValidating,
   } = useSWR(`/movies/search?${queryParams}`, {
     fallbackData: moviesRes,
   });
@@ -76,7 +76,7 @@ const SearchResults = ({ moviesRes }: Props) => {
           />
         </div>
         <MovieListContainer
-          isLoading={isLoading}
+          isLoading={isValidating}
           error={error}
           movies={movies.results}
           page={parseInt(pageQuery)}

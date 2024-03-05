@@ -19,9 +19,12 @@ const Movies = ({ moviesRes }: Props) => {
     updateQueryParams,
   } = useDiscoveryQueryParams();
 
-  const { data, error, isLoading } = useSWR(`/movies/discover?${queryParams}`, {
-    fallbackData: moviesRes,
-  });
+  const { data, error, isValidating } = useSWR(
+    `/movies/discover?${queryParams}`,
+    {
+      fallbackData: moviesRes,
+    }
+  );
 
   const handlePageChange = (_: any, page: number) => {
     const queryParams = {
@@ -36,7 +39,7 @@ const Movies = ({ moviesRes }: Props) => {
 
   return (
     <MovieListContainer
-      isLoading={isLoading}
+      isLoading={isValidating}
       error={error}
       movies={data.results}
       page={parseInt(queryPage)}
