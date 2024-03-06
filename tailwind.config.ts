@@ -14,6 +14,7 @@ const config: Config = {
       aspectRatio: {
         '5/7': '5 / 7',
         '3/1': '3 / 1',
+        '2/3': '2 / 3',
       },
       gridTemplateColumns: {
         '1/4': '1fr 4fr',

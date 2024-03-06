@@ -16,21 +16,19 @@ type Props = {
 
 const TrendingMovies = ({ moviesRes }: Props) => {
   return (
-    <section className='relative'>
-      <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-        }}
-        navigation
-        loop
-        modules={[Navigation]}>
-        {moviesRes.results.map(movie => (
-          <SwiperSlide key={movie.id} style={{ height: 'auto' }}>
-            <TrendingMovie movie={movie} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+    <Swiper
+      style={{
+        '--swiper-navigation-color': '#fff',
+      }}
+      navigation
+      loop
+      modules={[Navigation]}>
+      {moviesRes.results.map(movie => (
+        <SwiperSlide key={movie.id} style={{ height: 'auto' }}>
+          <TrendingMovie movie={movie} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 
