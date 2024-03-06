@@ -18,12 +18,13 @@ const MovieCarouselItem = ({ movie }: Props) => {
       <article className='relative flex flex-col rounded-xl overflow-hidden'>
         <MovieImage
           imageSrc={movie.poster_path}
-          serverWidth={400}
+          serverWidth={200}
           width={200}
           height={400}
           className='hover:opacity-90 transition-all'
-          sizes='30vw'
+          sizes='90vw'
           alt='Movie poster'
+          priority
         />
         <div className='p-2'>
           <div
