@@ -8,21 +8,23 @@ type MovieProps = {
 };
 
 const Movie = ({ movie }: MovieProps) => {
+  const releaseDate = new Date(movie.release_date);
+
   return (
     <article>
-      <div className='flex items-center gap-3 mb-10'>
-        <h1>{movie.title}</h1>
-        <h2>({movie.original_title})</h2>
+      <div className='mb-10'>
+        <h1>{`${movie.title} (${releaseDate.getFullYear()})`}</h1>
       </div>
-      <div className='flex gap-x-10'>
-        <MovieImage
-          imageSrc={movie.poster_path}
-          serverWidth={500}
-          width={400}
-          height={600}
-          alt='Movie poster'
-          priority
-        />
+      <div className='flex flex-1 gap-x-10'>
+        <div className='relative aspect-2/3 w-full max-w-xs'>
+          <MovieImage
+            imageSrc={movie.poster_path}
+            serverWidth={'original'}
+            fill
+            alt='Movie poster'
+            priority
+          />
+        </div>
         <MovieDescription movie={movie} />
       </div>
     </article>
