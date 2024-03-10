@@ -18,8 +18,8 @@ const Movie = ({ movie, credits }: MovieProps) => {
       <div className='mb-10'>
         <h1>{`${movie.title} (${releaseDate.getFullYear()})`}</h1>
       </div>
-      <div className='flex flex-1 gap-x-10'>
-        <div className='relative aspect-2/3 w-full max-w-xs'>
+      <div className='flex flex-col md:flex-row items-center md:items-start flex-1 gap-y-10 md:gap-x-10'>
+        <div className='relative aspect-2/3 w-full min-w-max max-w-xs'>
           <MovieImage
             imageSrc={movie.poster_path}
             serverWidth={500}

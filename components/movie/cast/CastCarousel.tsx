@@ -25,7 +25,33 @@ const MovieCastCarousel = ({ cast }: Props) => {
   return (
     <>
       <Swiper
-        slidesPerView={10}
+        slidesPerView={2}
+        breakpoints={{
+          100: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          450: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 8,
+            spaceBetween: 20,
+          },
+          1440: {
+            slidesPerView: 10,
+            spaceBetween: 20,
+          },
+        }}
         spaceBetween={20}
         onSwiper={it => (swiperRef.current = it)}
         onSlideChange={e => {
@@ -43,13 +69,13 @@ const MovieCastCarousel = ({ cast }: Props) => {
       <ArrowBackIosIcon
         className={` ${
           isBeginning ? 'hidden ' : ''
-        }absolute top-[45%] -left-6 cursor-pointer scale-125`}
+        }absolute top-[45%] -left-5 md:-left-6 cursor-pointer scale-125`}
         onClick={() => swiperRef.current?.slidePrev()}
       />
       <ArrowForwardIosIcon
         className={`${
           isEnd ? 'hidden ' : ''
-        }absolute top-[45%] -right-8 cursor-pointer scale-125`}
+        }absolute top-[45%] -right-7 md:-right-8 cursor-pointer scale-125`}
         onClick={() => swiperRef.current?.slideNext()}
       />
     </>
