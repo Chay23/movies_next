@@ -9,7 +9,7 @@ type Props = {
 const MovieCast = ({ cast }: Props) => {
   return (
     <section className='relative pt-10'>
-      <h3 className='pb-5'>Movie Cast</h3>
+      <h2 className='pb-5'>Movie Cast</h2>
       <MovieCastCarousel cast={cast} />
     </section>
   );
