@@ -1,13 +1,16 @@
 import type { movie } from '@/typings/movie/movie';
+import type { api } from '@/typings/api';
 
 import MovieDescription from './MovieDescription';
 import MovieImage from '../common/image/MovieImage';
+import MovieCast from './cast/MovieCast';
 
 type MovieProps = {
   movie: movie.Movie;
+  credits: api.MovieCreditsResponse;
 };
 
-const Movie = ({ movie }: MovieProps) => {
+const Movie = ({ movie, credits }: MovieProps) => {
   const releaseDate = new Date(movie.release_date);
 
   return (
@@ -19,7 +22,7 @@ const Movie = ({ movie }: MovieProps) => {
         <div className='relative aspect-2/3 w-full max-w-xs'>
           <MovieImage
             imageSrc={movie.poster_path}
-            serverWidth={'original'}
+            serverWidth={500}
             fill
             alt='Movie poster'
             priority
@@ -27,6 +30,7 @@ const Movie = ({ movie }: MovieProps) => {
         </div>
         <MovieDescription movie={movie} />
       </div>
+      <MovieCast cast={credits.cast} />
     </article>
   );
 };

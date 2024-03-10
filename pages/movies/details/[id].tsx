@@ -1,3 +1,4 @@
+import type { api } from '@/typings/api';
 import type { GetServerSideProps } from 'next';
 import type { movie } from '@/typings/movie/movie';
 
@@ -9,18 +10,35 @@ import { SERVER_ERROR_OBJECT } from '@/utils/constants';
 
 export const getServerSideProps = (async context => {
   try {
-    const res = await getData(`/movie/${context.params!.id}`);
-    if (res.error) {
+    const { params } = context;
+    const urls = [`/movie/${params!.id}`, `/movie/${params!.id}/credits`];
+
+    const [movieDetails, movieCredits] = await Promise.all(
+      urls.map(async url => {
+        return await getData(url);
+      })
+    );
+
+    if (movieDetails.error) {
       return {
         props: {
-          res,
+          ...movieDetails,
+        },
+      };
+    }
+
+    if (movieCredits.error) {
+      return {
+        props: {
+          ...movieCredits,
         },
       };
     }
 
     return {
       props: {
-        movie: res.data,
+        movie: movieDetails.data,
+        credits: movieCredits.data,
       },
     };
   } catch (e) {
@@ -33,10 +51,11 @@ export const getServerSideProps = (async context => {
 
 type MoviePageProps = {
   movie: movie.Movie;
+  credits: api.MovieCreditsResponse;
 };
 
-const MoviePage = ({ movie }: MoviePageProps) => {
-  return <Movie movie={movie} />;
+const MoviePage = ({ movie, credits }: MoviePageProps) => {
+  return <Movie movie={movie} credits={credits} />;
 };
 
 export default MoviePage;
