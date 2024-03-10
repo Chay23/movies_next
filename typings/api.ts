@@ -7,6 +7,10 @@ export namespace api {
     total_pages: number;
   };
 
+  export type MovieCreditsResponse = {
+    cast: movie.MovieCast[];
+  };
+
   export type FetchError = Error & {
     info: Record<string, string | number | boolean>;
     status: number;

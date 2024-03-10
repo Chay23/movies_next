@@ -1,29 +1,23 @@
 import type { movie } from '@/typings/movie/movie';
 
+import { getMovieDescription } from './utils';
+
 type MovieDescriptionProps = {
   movie: movie.Movie;
 };
 
 const MovieDescription = ({ movie }: MovieDescriptionProps) => {
-  const getMovieGenres = () => {
-    return movie.genres
-      .reduce((prevVal, genre) => {
-        return prevVal.concat(genre.name, ', ');
-      }, '')
-      .slice(0, -2);
-  };
+  const movieDesc = getMovieDescription(movie);
 
   return (
     <div className='flex flex-col gap-5'>
       <i>{movie.tagline}</i>
-      <div>
-        <p className='text-xl font-semibold'>Genres:</p>
-        <p>{getMovieGenres()}</p>
-      </div>
-      <div>
-        <p className='text-xl font-semibold'>Overview</p>
-        <p>{movie.overview}</p>
-      </div>
+      {movieDesc.map(item => (
+        <div key={item.title}>
+          <p className='text-lg font-semibold'>{item.title}</p>
+          <p>{item.value}</p>
+        </div>
+      ))}
     </div>
   );
 };
