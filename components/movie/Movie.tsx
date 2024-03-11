@@ -2,7 +2,6 @@ import type { movie } from '@/typings/movie/movie';
 import type { api } from '@/typings/api';
 
 import MovieDescription from './MovieDescription';
-import MovieImage from '../common/image/MovieImage';
 import MovieCast from './cast/MovieCast';
 
 type MovieProps = {
@@ -11,25 +10,9 @@ type MovieProps = {
 };
 
 const Movie = ({ movie, credits }: MovieProps) => {
-  const releaseDate = new Date(movie.release_date);
-
   return (
     <article>
-      <div className='mb-10'>
-        <h1>{`${movie.title} (${releaseDate.getFullYear()})`}</h1>
-      </div>
-      <div className='flex flex-col md:flex-row items-center md:items-start flex-1 gap-y-10 md:gap-x-10'>
-        <div className='relative aspect-2/3 w-full min-w-max max-w-xs'>
-          <MovieImage
-            imageSrc={movie.poster_path}
-            serverWidth={500}
-            fill
-            alt='Movie poster'
-            priority
-          />
-        </div>
-        <MovieDescription movie={movie} />
-      </div>
+      <MovieDescription movie={movie} />
       <MovieCast cast={credits.cast} />
     </article>
   );
