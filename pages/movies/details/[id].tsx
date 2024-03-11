@@ -2,6 +2,7 @@ import type { api } from '@/typings/api';
 import type { GetServerSideProps } from 'next';
 import type { movie } from '@/typings/movie/movie';
 
+import Head from 'next/head';
 import Movie from '@/components/movie/Movie';
 
 import { getData } from '@/services/api';
@@ -55,7 +56,15 @@ type MoviePageProps = {
 };
 
 const MoviePage = ({ movie, credits }: MoviePageProps) => {
-  return <Movie movie={movie} credits={credits} />;
+  const releaseDate = new Date(movie.release_date);
+  return (
+    <>
+      <Head>
+        <title>{`${movie.title} (${releaseDate.getFullYear()})`}</title>
+      </Head>
+      <Movie movie={movie} credits={credits} />;
+    </>
+  );
 };
 
 export default MoviePage;
