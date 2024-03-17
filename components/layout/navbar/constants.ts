@@ -35,12 +35,14 @@ export const menuItems: navbar.MenuItem[] = [
     url: '/series',
     submenu: [
       {
+        key: 'discover',
+        title: 'Discover',
+        href: '/series/discover',
+      },
+      {
         key: 'popular',
         title: 'Popular',
-        href: {
-          pathname: '/series/[list]',
-          query: { list: 'popular' },
-        },
+        href: '/series/popular',
       },
     ],
   },
