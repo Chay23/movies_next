@@ -1,13 +1,13 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Discover series',
+  title: 'Discover TV Shows',
 };
 
-export default function App() {
+export default function Discover() {
   return (
     <section>
-      <h1>Discover Series</h1>
+      <h1>Discover TV Shows</h1>
     </section>
   );
 }

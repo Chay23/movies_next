@@ -31,18 +31,18 @@ export const menuItems: navbar.MenuItem[] = [
     ],
   },
   {
-    title: 'Series',
-    url: '/series',
+    title: 'TV Shows',
+    url: '/tv',
     submenu: [
       {
         key: 'discover',
         title: 'Discover',
-        href: '/series/discover',
+        href: '/tv/discover',
       },
       {
         key: 'popular',
         title: 'Popular',
-        href: '/series/popular',
+        href: '/tv/popular',
       },
     ],
   },
