@@ -1,6 +1,6 @@
 import type { tv } from '@/typings/tv/tv';
 
-import MovieImage from '@/components/common/image/MovieImage';
+import Image from '@/components/common/image/MovieImage';
 import Link from 'next/link';
 
 type Props = {
@@ -18,7 +18,7 @@ export default function TVShow({ tvShow }: Props) {
   return (
     <article>
       <div className='relative w-full max-w-xl mb-2 aspect-5/7 rounded-xl overflow-hidden'>
-        <MovieImage
+        <Image
           imageSrc={tvShow.poster_path}
           serverWidth={300}
           fill
