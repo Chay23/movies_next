@@ -1,31 +1,25 @@
-import type { api } from '@/typings/api';
-import type { tv } from '@/typings/tv/tv';
+import type { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 import type { Metadata } from 'next';
 
-import TVShowList from './shows';
-import Error from '@/components/error/Error';
+import { Suspense } from 'react';
 
-import { getData } from '@/services/api';
+import TVShowList from './_shows/page';
+import ListSkeleton from '@/app/components/common/skeletons/list/Skeleton';
 
 export const metadata: Metadata = {
   title: 'Discover TV Shows',
 };
 
-export default async function Discover() {
-  const [tvShowsRes] = await Promise.all([
-    getData<api.PaginatedResponse<tv.Show>>('/discover/tv'),
-  ]);
+type Props = {
+  searchParams: searchParams.TvDiscover;
+};
 
-  if (tvShowsRes.error) {
-    const { status, info } = tvShowsRes;
-    return <Error status={status} info={info} />;
-  }
-
+export default async function Discover({ searchParams }: Props) {
   return (
     <>
-      <TVShowList tvShows={tvShowsRes.data.results} />
+      <Suspense fallback={<ListSkeleton />} key={searchParams.page}>
+        <TVShowList searchParams={searchParams} />
+      </Suspense>
     </>
   );
 }
-
-export const revalidate = 60 * 60 * 2;

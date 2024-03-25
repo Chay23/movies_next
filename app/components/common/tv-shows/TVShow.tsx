@@ -17,13 +17,14 @@ export default function TVShow({ tvShow }: Props) {
 
   return (
     <article>
-      <div className='relative w-full max-w-xl mb-2 aspect-5/7 rounded-xl overflow-hidden'>
+      <div className='relative w-full max-w-xl mb-2 aspect-2/3 rounded-xl overflow-hidden'>
         <Image
           imageSrc={tvShow.poster_path}
-          serverWidth={300}
+          serverWidth={400}
           fill
           alt='TV Show Poster'
           style={{ objectFit: 'cover' }}
+          sizes='(max-width: 768px) 70vw, (max-width: 1200px) 90vw, 100vw'
         />
       </div>
       <Link
