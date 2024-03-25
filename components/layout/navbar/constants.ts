@@ -37,7 +37,7 @@ export const menuItems: navbar.MenuItem[] = [
       {
         key: 'discover',
         title: 'Discover',
-        href: '/tv/discover',
+        href: `/tv/discover?page=${DEFAULT_PAGE_VALUE}`,
       },
       {
         key: 'popular',
