@@ -1,4 +1,4 @@
-import type { filters } from '@/typings/movie/movieFilters';
+import type { filters } from '@/typings/filters';
 
 import GenresFilter from './GenresFilter';
 import SortFilter from './SortFilter';

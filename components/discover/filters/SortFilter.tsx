@@ -1,4 +1,4 @@
-import type { filters } from '@/typings/movie/movieFilters';
+import type { filters } from '@/typings/filters';
 
 import { useId } from 'react';
 import { useDiscoveryQueryParams } from '@/hooks/useDiscoveryQueryParams';

@@ -1,4 +1,4 @@
-import type { filters } from '@/typings/movie/movieFilters';
+import type { filters } from '@/typings/filters';
 import type { api } from '@/typings/api';
 import type { movie } from '@/typings/movie/movie';
 

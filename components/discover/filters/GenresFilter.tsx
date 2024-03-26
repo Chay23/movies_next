@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react';
-import type { filters } from '@/typings/movie/movieFilters';
+import type { filters } from '@/typings/filters';
 
 import { useDiscoveryQueryParams } from '@/hooks/useDiscoveryQueryParams';
 
