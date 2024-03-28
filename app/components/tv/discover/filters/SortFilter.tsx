@@ -1,4 +1,5 @@
 import type { filters } from '@/typings/filters';
+import type { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 
 import { useId } from 'react';
 import { useQueryParams } from '@/hooks/app/useQueryParams';
@@ -7,9 +8,9 @@ import Select from 'react-select';
 import FilterContainer from './FilterContainer';
 
 import { sortOptions } from '@/utils/app/constants';
+import { DEFAULT_PAGE_VALUE } from '@/utils/constants';
 
 import { getSelectedSortOption } from '@/utils/app/utils';
-import { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 
 const SortFilter = () => {
   const id = useId();
@@ -20,7 +21,7 @@ const SortFilter = () => {
 
   const handleSortOptionChange = (option: filters.SortOption | null) => {
     if (option) {
-      updateQueryParams({ sort_by: option.value });
+      updateQueryParams({ sort_by: option.value, page: DEFAULT_PAGE_VALUE });
     }
   };
 

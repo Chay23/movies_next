@@ -1,16 +1,19 @@
 import type { filters } from '@/typings/filters';
 
+import { useMemo } from 'react';
 import { useQueryParams } from '@/hooks/app/useQueryParams';
 import { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 
 import FilterContainer from './FilterContainer';
+
+import { DEFAULT_PAGE_VALUE } from '@/utils/constants';
 
 import {
   addGenreToQuery,
   markSelectedGenres,
   removeGenreFromQuery,
 } from '@/utils/app/utils';
-import { useMemo } from 'react';
+
 
 type Props = {
   genres: filters.GenreList;
@@ -38,7 +41,10 @@ const GenresFilter = ({ genres }: Props) => {
       genreId
     );
 
-    updateQueryParams({ with_genres: updatedQueryGenres });
+    updateQueryParams({
+      with_genres: updatedQueryGenres,
+      page: DEFAULT_PAGE_VALUE,
+    });
   };
 
   const handleGenreDeselect = (genreId: string) => {
