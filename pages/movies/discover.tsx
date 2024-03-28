@@ -1,6 +1,7 @@
 import type { GetServerSideProps } from 'next';
 import type { api } from '@/typings/api';
 import type { movie } from '@/typings/movie/movie';
+import type { Genre } from '@/typings/common';
 
 import { getData } from '@/services/api';
 
@@ -64,7 +65,7 @@ export const getServerSideProps = (async context => {
 
 type Props = {
   moviesRes: api.PaginatedResponse<movie.Movie>;
-  movieGenres: movie.Genre[];
+  movieGenres: Genre[];
 };
 
 const DiscoverPage = ({ moviesRes, movieGenres }: Props) => {
