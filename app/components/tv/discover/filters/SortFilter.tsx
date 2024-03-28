@@ -1,38 +1,33 @@
 import type { filters } from '@/typings/filters';
 
 import { useId } from 'react';
-import { useDiscoveryQueryParams } from '@/hooks/useDiscoveryQueryParams';
+import { useQueryParams } from '@/hooks/app/useQueryParams';
 
 import Select from 'react-select';
 import FilterContainer from './FilterContainer';
 
-import { sortOptions } from '../constants';
+import { sortOptions } from '@/utils/app/constants';
 
-import { getSelectedSortOption } from '../utils';
+import { getSelectedSortOption } from '@/utils/app/utils';
+import { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 
 const SortFilter = () => {
   const id = useId();
-  const { queryPage, querySortOption, queryGenres, updateQueryParams } =
-    useDiscoveryQueryParams();
+  const { queryParams, updateQueryParams } =
+    useQueryParams<searchParams.TvDiscover>();
 
-  const sortOption = getSelectedSortOption(querySortOption);
+  const sortOption = getSelectedSortOption(queryParams.sort_by);
 
   const handleSortOptionChange = (option: filters.SortOption | null) => {
     if (option) {
-      const queryParams = {
-        sort_by: option.value,
-        page: queryPage,
-        ...(queryGenres && { with_genres: queryGenres }),
-      };
-
-      updateQueryParams(queryParams);
+      updateQueryParams({ sort_by: option.value });
     }
   };
 
   return (
     <FilterContainer title='Sort By'>
       <Select
-        id={id}
+        instanceId={id}
         options={sortOptions}
         defaultValue={sortOptions[1]}
         value={sortOption}

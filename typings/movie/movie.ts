@@ -1,9 +1,6 @@
-export namespace movie {
-  export type Genre = {
-    id: number;
-    name: string;
-  };
+import { Genre } from '../common';
 
+export namespace movie {
   export type Movie = {
     adult: boolean;
     genres: Genre[];

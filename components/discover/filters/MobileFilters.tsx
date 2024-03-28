@@ -1,4 +1,4 @@
-import type { filters } from '@/typings/movie/movieFilters';
+import type { filters } from '@/typings/filters';
 
 import { useBoolean } from '@/hooks/useBoolean';
 

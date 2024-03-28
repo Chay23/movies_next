@@ -8,7 +8,8 @@ export const getSelectedSortOption = (value: string): filters.SortOption => {
   ) as filters.SortOption;
 };
 
-export const markSelectedGenreOptions = (
+// add "selected" property to the selected genres otherwise just return a list of genres
+export const markSelectedGenres = (
   genreList: filters.GenreList,
   selectedGenres: string | undefined
 ) => {
