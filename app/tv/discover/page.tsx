@@ -22,7 +22,7 @@ export default async function Discover({ searchParams }: Props) {
       <Suspense fallback={<FiltersSkeleton />}>
         <Filters />
       </Suspense>
-      <Suspense fallback={<ListSkeleton />} key={searchParams.page}>
+      <Suspense fallback={<ListSkeleton />} key={JSON.stringify(searchParams)}>
         <TVShowList searchParams={searchParams} />
       </Suspense>
     </>
