@@ -14,9 +14,9 @@ type Props = {
 export default async function TVShowsPage({ searchParams }: Props) {
   const { page } = searchParams;
 
-  const [tvShowsRes] = await Promise.all([
-    getData<api.PaginatedResponse<tv.Show>>(`/discover/tv?page=${page}`),
-  ]);
+  const tvShowsRes = await getData<api.PaginatedResponse<tv.Show>>(
+    `/discover/tv?page=${page}`
+  );
 
   if (tvShowsRes.error) {
     const { status, info } = tvShowsRes;
