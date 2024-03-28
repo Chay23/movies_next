@@ -15,7 +15,7 @@ const Discover = ({ moviesRes, movieGenres }: Props) => {
   return (
     <section>
       <div className='flex justify-between items-center lg:block'>
-        <h1>Discover</h1>
+        <h1>Discover Movies</h1>
         <MobileFilters movieGenres={movieGenres} />
       </div>
       <div className='mt-5 lg:mt-12 md:grid md:grid-cols-1/2 xl:grid-cols-1/4 gap-7'>
