@@ -14,7 +14,6 @@ import {
   removeGenreFromQuery,
 } from '@/utils/app/utils';
 
-
 type Props = {
   genres: filters.GenreList;
 };
@@ -69,7 +68,7 @@ const GenresFilter = ({ genres }: Props) => {
             <button
               className={`py-1 px-2 md:border border-gray-300 rounded-lg transition-all ${
                 genre.selected
-                  ? 'bg-blue-600 text-gray-50'
+                  ? 'bg-blue-600 text-gray-50 hover:bg-blue-700'
                   : 'hover:border-blue-600 bg-white'
               }`}
               onClick={() =>
