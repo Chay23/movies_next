@@ -12,10 +12,15 @@ type Props = {
 };
 
 export default async function TVShowsPage({ searchParams }: Props) {
-  const { page } = searchParams;
+  const { page, sort_by, with_genres } = searchParams;
+  const queryParams = new URLSearchParams({
+    page,
+    sort_by,
+    ...(with_genres && { with_genres }),
+  });
 
   const tvShowsRes = await getData<api.PaginatedResponse<tv.Show>>(
-    `/discover/tv?page=${page}`
+    `/discover/tv?${queryParams.toString()}`
   );
 
   if (tvShowsRes.error) {
