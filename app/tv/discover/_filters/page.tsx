@@ -1,7 +1,7 @@
 import type { api } from '@/typings/api';
 
 import Filters from './filters';
-import FiltersError from './filtersError';
+import FiltersError from '@/app/components/ui/filters/DesktopFiltersError';
 
 import { getData } from '@/services/api';
 
