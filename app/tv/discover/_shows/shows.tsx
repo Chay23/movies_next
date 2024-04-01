@@ -1,7 +1,6 @@
 'use client';
 
 import type { api } from '@/typings/api';
-import type { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 import type { tv } from '@/typings/tv/tv';
 
 import PaginatedList from '@/app/components/common/list/PaginatedList';
@@ -12,11 +11,10 @@ import { useQueryParams } from '@/hooks/app/useQueryParams';
 
 type Props = {
   tvShowsRes: api.PaginatedResponse<tv.Show>;
-  searchParams: searchParams.TvDiscover;
 };
 
-export default function TvShows({ tvShowsRes, searchParams }: Props) {
-  const { updateQueryParams } = useQueryParams();
+export default function TvShows({ tvShowsRes }: Props) {
+  const { queryParams, updateQueryParams } = useQueryParams();
 
   const handlePageChange = (_: any, page: number) => {
     updateQueryParams({ page: page.toString() });
@@ -28,7 +26,7 @@ export default function TvShows({ tvShowsRes, searchParams }: Props) {
 
   return (
     <PaginatedList
-      page={parseInt(searchParams.page)}
+      page={parseInt(queryParams.page)}
       totalPages={tvShowsRes.total_pages}
       onPageChange={handlePageChange}
       items={tvShowsRes.results}
