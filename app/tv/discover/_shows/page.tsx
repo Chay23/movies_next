@@ -28,5 +28,5 @@ export default async function TVShowsPage({ searchParams }: Props) {
     return <Error status={status} info={info} />;
   }
 
-  return <TvShows tvShowsRes={tvShowsRes.data} searchParams={searchParams} />;
+  return <TvShows tvShowsRes={tvShowsRes.data} />;
 }
