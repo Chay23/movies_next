@@ -4,7 +4,8 @@ import { useMemo } from 'react';
 import { useQueryParams } from '@/hooks/app/useQueryParams';
 import { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 
-import FilterContainer from './FilterContainer';
+import FilterContainer from '../FilterContainer';
+import GenreList from './GenreList';
 
 import { DEFAULT_PAGE_VALUE } from '@/utils/constants';
 
@@ -15,7 +16,7 @@ import {
 } from '@/utils/app/utils';
 
 type Props = {
-  genres: filters.GenreList;
+  genres: filters.GenreOptions;
 };
 
 const GenresFilter = ({ genres }: Props) => {
@@ -31,7 +32,7 @@ const GenresFilter = ({ genres }: Props) => {
     if (remove) {
       return handleGenreDeselect(genreId);
     }
-    handleGenreSelect(genreId);
+    return handleGenreSelect(genreId);
   };
 
   const handleGenreSelect = (genreId: string) => {
@@ -62,23 +63,7 @@ const GenresFilter = ({ genres }: Props) => {
 
   return (
     <FilterContainer title='Genre'>
-      <ul className='flex flex-wrap gap-3'>
-        {markedGenres.map(genre => (
-          <li key={genre.id}>
-            <button
-              className={`py-1 px-2 md:border border-gray-300 rounded-lg transition-all ${
-                genre.selected
-                  ? 'bg-blue-600 text-gray-50 hover:bg-blue-700'
-                  : 'hover:border-blue-600 bg-white'
-              }`}
-              onClick={() =>
-                handleMouseEvent(genre.id.toString(), genre.selected)
-              }>
-              {genre.name}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <GenreList genres={markedGenres} handleMouseEvent={handleMouseEvent} />
     </FilterContainer>
   );
 };
