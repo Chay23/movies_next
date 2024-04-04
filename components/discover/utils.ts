@@ -9,7 +9,7 @@ export const getSelectedSortOption = (value: string): filters.SortOption => {
 };
 
 export const markSelectedGenreOptions = (
-  genreList: filters.GenreList,
+  genreList: filters.GenreOptions,
   selectedGenres: string | undefined
 ) => {
   if (selectedGenres) {

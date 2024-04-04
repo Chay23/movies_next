@@ -4,7 +4,7 @@ import GenresFilter from './GenresFilter';
 import SortFilter from './SortFilter';
 
 type Props = {
-  movieGenres: filters.GenreList;
+  movieGenres: filters.GenreOptions;
 };
 
 const DesktopFilters = ({ movieGenres }: Props) => {

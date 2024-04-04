@@ -14,7 +14,7 @@ import {
 } from '../utils';
 
 type Props = {
-  movieGenres: filters.GenreList;
+  movieGenres: filters.GenreOptions;
 };
 
 const GenresFilter = ({ movieGenres }: Props) => {

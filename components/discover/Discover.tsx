@@ -8,7 +8,7 @@ import DesktopFilters from './filters/DesktopFilters';
 
 type Props = {
   moviesRes: api.PaginatedResponse<movie.Movie>;
-  movieGenres: filters.GenreList;
+  movieGenres: filters.GenreOptions;
 };
 
 const Discover = ({ moviesRes, movieGenres }: Props) => {
