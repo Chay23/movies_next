@@ -10,7 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import FilterIcon from '@mui/icons-material/FilterAlt';
 
 type Props = {
-  movieGenres: filters.GenreList;
+  movieGenres: filters.GenreOptions;
 };
 
 const MobileFilters = ({ movieGenres }: Props) => {

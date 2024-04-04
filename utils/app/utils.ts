@@ -10,7 +10,7 @@ export const getSelectedSortOption = (value: string): filters.SortOption => {
 
 // add "selected" property to the selected genres otherwise just return a list of genres
 export const markSelectedGenres = (
-  genreList: filters.GenreList,
+  genreList: filters.GenreOptions,
   selectedGenres: string | undefined
 ) => {
   if (selectedGenres) {
