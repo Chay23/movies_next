@@ -17,6 +17,14 @@ export const useQueryParams = <T extends Record<string, string>>() => {
     router.replace(`${pathname}?${updatedQueryParams}`);
   };
 
+  const replaceQueryParams = (
+    queryParamsObj: Record<string, string>
+  ) => {
+    const updatedQueryParams = constructQueryParams(queryParamsObj);
+
+    router.replace(`${pathname}?${updatedQueryParams}`);
+  };
+
   const removeQueryParam = (name: string) => {
     delete queryParams[name];
     const updatedQueryGenres = constructQueryParams(queryParams);
@@ -24,7 +32,12 @@ export const useQueryParams = <T extends Record<string, string>>() => {
     router.replace(`${pathname}?${updatedQueryGenres}`);
   };
 
-  return { queryParams, updateQueryParams, removeQueryParam };
+  return {
+    queryParams,
+    updateQueryParams,
+    replaceQueryParams,
+    removeQueryParam,
+  };
 };
 
 const constructQueryParams = (queryParamsObj: Record<string, string>) => {
