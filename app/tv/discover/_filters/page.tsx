@@ -1,16 +1,11 @@
 import type { api } from '@/typings/api';
 
 import Filters from './filters';
-import FiltersError from '@/app/components/ui/filters/DesktopFiltersError';
 
 import { getData } from '@/services/api';
 
 export default async function FiltersPage() {
   const tvGenresRes = await getData<api.GenreResponse>('/genre/tv/list');
 
-  if (tvGenresRes.error) {
-    return <FiltersError />;
-  }
-
-  return <Filters genres={tvGenresRes.data.genres} />;
+  return <Filters genresRes={tvGenresRes} />;
 }

@@ -2,8 +2,6 @@ import type { api } from '@/typings/api';
 
 import { getEnvironmentVariable } from '@/utils/utils';
 
-type FetcherResponse<T> = api.SuccessResponse<T> | api.ErrorResponse;
-
 export const fetcher = async <T>(url: string, ...args: [any]): Promise<T> => {
   const res = await fetch(url, ...args);
   const json = await res.json();
@@ -51,6 +49,8 @@ export const getData = async <T>(
 ): Promise<FetcherResponse<T>> => {
   const bearer = getEnvironmentVariable('API_BEARER');
   const apiURL = getEnvironmentVariable('API_URL');
+
+  // await new Promise(resolve => setTimeout(resolve, 3000));
 
   const _options = {
     ...options,

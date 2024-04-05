@@ -1,13 +1,17 @@
 'use client';
 
-import type { filters } from '@/typings/filters';
+import type { api } from '@/typings/api';
 
 import DesktopFilters from '@/app/components/tv/discover/filters/DesktopFilters';
 
 type Props = {
-  genres: filters.GenreList;
+  genresRes: api.FetcherResponse<api.GenreResponse>;
 };
 
-export default function Filters({ genres }: Props) {
-  return <DesktopFilters genres={genres} />;
+export default function Filters({ genresRes }: Props) {
+  return (
+    <>
+      <DesktopFilters genresRes={genresRes} />
+    </>
+  );
 }
