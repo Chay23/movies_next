@@ -1,3 +1,4 @@
+import type { Genre } from './common';
 import type { movie } from './movie/movie';
 
 export namespace api {
@@ -35,7 +36,9 @@ export namespace api {
     data: Awaited<T>;
   };
 
+  export type FetcherResponse<T> = SuccessResponse<T> | ErrorResponse;
+
   export type GenreResponse = {
-    genres: movie.Genre[];
+    genres: Genre[];
   };
 }
