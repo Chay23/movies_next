@@ -2,7 +2,7 @@ import type { navbar } from '@/typings/navbar';
 
 import { DEFAULT_PAGE_VALUE, DEFAULT_SORT_VALUE } from '@/utils/constants';
 
-export const menuItems: navbar.MenuItem[] = [
+export const NAV_LINKS: navbar.MenuItem[] = [
   {
     title: 'Movies',
     url: '/movies',
@@ -15,18 +15,12 @@ export const menuItems: navbar.MenuItem[] = [
       {
         key: 'popular',
         title: 'Popular',
-        href: {
-          pathname: '/movies/[list]',
-          query: { list: 'popular' },
-        },
+        href: `/movies/popular`,
       },
       {
         key: 'now-playing',
         title: 'Now Playing',
-        href: {
-          pathname: '/movies/[list]',
-          query: { list: 'now-playing' },
-        },
+        href: '/movies/now-playing',
       },
     ],
   },
