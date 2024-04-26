@@ -46,11 +46,9 @@ export const getData = async <T>(
   apiResource: string,
   queryParams: Record<string, string | number> = {},
   options?: RequestInit
-): Promise<FetcherResponse<T>> => {
+): Promise<api.FetcherResponse<T>> => {
   const bearer = getEnvironmentVariable('API_BEARER');
   const apiURL = getEnvironmentVariable('API_URL');
-
-  // await new Promise(resolve => setTimeout(resolve, 3000));
 
   const _options = {
     ...options,
