@@ -1,12 +1,6 @@
 import type { movie } from '@/typings/movie/movie';
 
-export const getMovieGenres = (genres: movie.Genre[]) => {
-  return genres
-    .reduce((prevVal, genre) => {
-      return prevVal.concat(genre.name, ', ');
-    }, '')
-    .slice(0, -2);
-};
+import { getGenresString } from '@/utils/genres/utils';
 
 export const getMovieReleaseDate = (date: string) => {
   const dateObj = new Date(date);
@@ -36,7 +30,7 @@ export const getMovieDescription = (movie: movie.Movie) => {
     },
     {
       title: 'Genres',
-      value: getMovieGenres(movie.genres),
+      value: getGenresString(movie.genres),
     },
     {
       title: 'Overview',
