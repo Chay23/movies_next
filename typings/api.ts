@@ -1,6 +1,4 @@
-import type { Genre } from './common';
-import type { movie } from './movie/movie';
-
+import type { TCast, Genre } from './common';
 export namespace api {
   export type PaginatedResponse<T> = {
     page: number;
@@ -8,8 +6,8 @@ export namespace api {
     total_pages: number;
   };
 
-  export type MovieCreditsResponse = {
-    cast: movie.MovieCast[];
+  export type CreditsResponse = {
+    cast: TCast[];
   };
 
   export type FetchError = Error & {

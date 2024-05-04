@@ -1,4 +1,4 @@
-import { Genre } from '../common';
+import { Genre, TCast } from '../common';
 
 export namespace movie {
   export type Movie = {
@@ -18,11 +18,5 @@ export namespace movie {
     poster_path: string;
   };
 
-  export type MovieCast = {
-    id: number;
-    name: string;
-    profile_path: string;
-    character: string;
-    status: string;
-  };
+  export type Cast = TCast;
 }

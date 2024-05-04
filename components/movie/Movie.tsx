@@ -6,7 +6,7 @@ import MovieCast from './cast/MovieCast';
 
 type MovieProps = {
   movie: movie.Movie;
-  credits: api.MovieCreditsResponse;
+  credits: api.CreditsResponse;
 };
 
 const Movie = ({ movie, credits }: MovieProps) => {
