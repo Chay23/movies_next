@@ -14,7 +14,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 type Props = {
-  cast: movie.MovieCast[];
+  cast: movie.Cast[];
 };
 
 const MovieCastCarousel = ({ cast }: Props) => {

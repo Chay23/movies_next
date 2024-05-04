@@ -3,7 +3,7 @@ import type { movie } from '@/typings/movie/movie';
 import MovieCastCarousel from './CastCarousel';
 
 type Props = {
-  cast: movie.MovieCast[];
+  cast: movie.Cast[];
 };
 
 const MovieCast = ({ cast }: Props) => {
