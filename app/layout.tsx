@@ -1,10 +1,10 @@
 import '@/styles/globals.css';
 
 import type { Metadata } from 'next';
-
 import { Roboto } from 'next/font/google';
 
 import LayoutComponent from './layoutComponent';
+import Providers from './providers';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
@@ -18,9 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={roboto.className}>
+    <html lang='en' className={roboto.className} suppressHydrationWarning>
       <body>
-        <LayoutComponent>{children}</LayoutComponent>
+        <Providers>
+          <LayoutComponent>{children}</LayoutComponent>
+        </Providers>
       </body>
     </html>
   );
