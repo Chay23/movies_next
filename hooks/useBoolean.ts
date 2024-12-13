@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 type UseBooleanOutput = {
   value: boolean;
@@ -13,17 +13,17 @@ type UseBooleanOutput = {
 export const useBoolean = (initialValue: boolean): UseBooleanOutput => {
   const [value, setValue] = useState(initialValue);
 
-  const setTrue = () => {
+  const setTrue = useCallback(() => {
     setValue(true);
-  };
+  }, []);
 
-  const setFalse = () => {
+  const setFalse = useCallback(() => {
     setValue(false);
-  };
+  }, []);
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     setValue(prevVal => !prevVal);
-  };
+  }, []);
 
   return {
     value,
