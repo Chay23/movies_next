@@ -1,7 +1,7 @@
 import type { tv } from '@/typings/tv/tv';
 
 import Image from '@/components/common/image/MovieImage';
-import DetailsItem from './DetailsItem';
+import DetailsItem from './Details';
 
 import { getSeriesDetails } from '../utils';
 
@@ -9,7 +9,7 @@ type Props = {
   series: tv.ShowExtended;
 };
 
-export default function MainDetails({ series }: Props) {
+export default function Description({ series }: Props) {
   return (
     <article className='flex flex-col md:flex-row items-center md:items-start flex-1 gap-y-10 md:gap-x-10 mb-10 p-3 md:p-10 bg-slate-200 shadow-md rounded-2xl'>
       <div className='relative aspect-2/3 w-full min-w-max max-w-xs rounded-lg overflow-hidden'>

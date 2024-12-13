@@ -40,12 +40,19 @@ export const getSeriesDetails = (
   return [
     {
       key: 'year_genres',
-      containerClasses: 'gap-4 flex-wrap',
+      containerClasses: 'gap-3 flex-wrap',
       row: [
         {
           key: 'year',
-          containerClasses: 'px-5 py-1 bg-blue-500 rounded-lg',
+          containerClasses: 'px-5 py-1 bg-blue-500 text-white rounded-lg',
           value: firstAirYear,
+        },
+        {
+          key: 'status',
+          valueClasses: `px-5 py-1 rounded-lg ${getStatusBackground(
+            series.status
+          )}`,
+          value: series.status,
         },
         ...getGenres(series.genres),
       ],
@@ -61,44 +68,29 @@ export const getSeriesDetails = (
       titleClasses: 'my-2',
       value: series.overview,
     },
+    {
+      key: 'first_last_on_air',
+      containerClasses:
+        'gap-5 items-center flex-wrap basis-full',
+      row: [
+        {
+          key: 'first_on_air',
+          title: 'First On Air',
+          value: getRepresentativeDate(new Date(series.first_air_date)),
+        },
+        {
+          key: 'last_on_air',
+          title: 'Last On Air',
+          value: getRepresentativeDate(new Date(series.last_air_date)),
+        },
+      ],
+    },
+    {
+      key: 'seasons',
+      title: 'Seasons',
+      value: series.number_of_seasons,
+    },
     { key: 'tagline', value: series.tagline, valueClasses: 'italic' },
   ];
 };
 
-export const getOtherDetails = (
-  series: tv.ShowExtended
-): SeriesDescription[] => [
-  {
-    key: 'original_name',
-    title: 'Original Name',
-    value: series.original_name,
-  },
-  {
-    key: 'first_last_on_air',
-    containerClasses: 'gap-5 items-center flex-wrap',
-    row: [
-      {
-        key: 'first_on_air',
-        title: 'First On Air',
-        value: getRepresentativeDate(new Date(series.first_air_date)),
-      },
-      {
-        key: 'last_on_air',
-        title: 'Last On Air',
-        value: getRepresentativeDate(new Date(series.last_air_date)),
-      },
-      {
-        key: 'status',
-        valueClasses: `px-5 py-1 rounded-lg ${getStatusBackground(
-          series.status
-        )}`,
-        value: series.status,
-      },
-    ],
-  },
-  {
-    key: 'seasons',
-    title: 'Seasons',
-    value: series.number_of_seasons,
-  },
-];
