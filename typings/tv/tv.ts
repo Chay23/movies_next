@@ -1,6 +1,16 @@
-import type { Genre } from '../common';
+import type { Genre, TCast } from '../common';
 
 export namespace tv {
+  export type Role = {
+    credit_id: string;
+    character: string;
+    episode_count: number;
+  };
+
+  export type Cast = TCast & {
+    roles: Role[];
+  };
+
   export type Creator = {
     id: number;
     credit_id: string;

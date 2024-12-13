@@ -1,10 +1,10 @@
 import type { tv } from '@/typings/tv/tv';
+import type { api } from '@/typings/api';
 
-import SeriesDescription from '@/app/components/tv/details/description/MainDetails';
+import Description from '@/app/components/tv/details/description/Description';
 
 import { getData } from '@/services/api';
-import { OtherDetails } from '@/app/components/tv/details/description/OtherDetails';
-import Cast from '@/app/components/tv/details/cast/Cast';
+import CastPage from './cast';
 
 type Props = {
   params: { id: string };
@@ -12,18 +12,24 @@ type Props = {
 
 export default async function SeriesDetailsPage({ params }: Props) {
   const series = await getData<tv.ShowExtended>(`/tv/${params.id}`);
+  const cast = await getData<api.CreditsResponse>(
+    `/tv/${params.id}/aggregate_credits`
+  );
 
   if (series.error) {
     return null;
   }
 
+  if (cast.error) {
+    return null;
+  }
+
   return (
-    <section>
-      <SeriesDescription series={series.data} />
-      <div className='flex flex-col md:flex-row gap-10'>
-        <OtherDetails series={series.data} />
-        <Cast />
+    <>
+      <Description series={series.data} />
+      <div className='gap-10'>
+        <CastPage cast={cast.data.cast} />
       </div>
-    </section>
+    </>
   );
 }

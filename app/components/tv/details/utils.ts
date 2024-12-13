@@ -94,3 +94,10 @@ export const getSeriesDetails = (
   ];
 };
 
+export const getCastRoles = (roles: tv.Role[]) => {
+  return roles
+    .reduce((prevVal, role) => {
+      return prevVal.concat(role.character, ', ');
+    }, '')
+    .slice(0, -2);
+};
