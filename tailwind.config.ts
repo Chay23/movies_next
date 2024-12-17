@@ -17,8 +17,10 @@ const config: Config = {
         'bg-dark': 'var(--bg-dark)',
         'bg-light': 'var(--bg-light)',
         'bg-light-100': 'var(--bg-light-100)',
+        'bg-slate-blue': 'var(--bg-slate-blue)',
         'text-primary': 'var(--text-primary)',
-        'text-secondary': 'var(--text-secondary)'
+        'text-secondary': 'var(--text-secondary)',
+        'border': 'var(--border)'
       },
       aspectRatio: {
         '5/7': '5 / 7',

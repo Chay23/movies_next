@@ -33,7 +33,7 @@ const MovieImage = ({
   return (
     <Image
       src='/static/images/no-picture.png'
-      className={className + 'border border-gray-200 rounded-xl'}
+      className={className + 'bg-bg-light border border-border rounded-xl p-5'}
       style={{ objectFit: 'contain' }}
       alt='No image'
       sizes={
