@@ -1,10 +1,13 @@
 import type { tv } from '@/typings/tv/tv';
 import type { api } from '@/typings/api';
+import type { Breadcrumb } from '@/typings/common';
 
 import Description from '@/app/components/tv/details/description/Description';
+import CastPage from './cast';
+import Breadcrumbs from '@/app/components/common/Breadcrumbs';
 
 import { getData } from '@/services/api';
-import CastPage from './cast';
+import { DEFAULT_PAGE_VALUE, DEFAULT_SORT_VALUE } from '@/utils/constants';
 
 type Props = {
   params: { id: string };
@@ -33,8 +36,19 @@ export default async function SeriesDetailsPage({ params }: Props) {
     return null;
   }
 
+  const breadcrumbs: Breadcrumb[] = [
+    {
+      title: 'Discover Series',
+      href: `/tv/discover?sort_by=${DEFAULT_SORT_VALUE}&page=${DEFAULT_PAGE_VALUE}`,
+    },
+    {
+      title: series.data.name,
+    },
+  ];
+
   return (
     <>
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
       <Description series={series.data} />
       <div className='gap-10'>
         <CastPage cast={cast.data.cast} />
