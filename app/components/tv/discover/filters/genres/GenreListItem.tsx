@@ -11,8 +11,8 @@ export default function GenresListItem({ genre, handleMouseEvent }: Props) {
       <button
         className={`w-full py-2 md:py-1 px-3 md:border border-gray-300 rounded-lg transition-all ${
           genre.selected
-            ? 'bg-blue-600 text-gray-50 hover:bg-blue-700'
-            : 'hover:border-blue-600 bg-white'
+            ? 'bg-blue-600 hover:bg-blue-700'
+            : 'hover:border-blue-600 bg-bg-dark'
         }`}
         onClick={() => handleMouseEvent(genre.id.toString(), genre.selected)}>
         {genre.name}

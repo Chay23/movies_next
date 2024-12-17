@@ -23,7 +23,6 @@ export default function TVShow({ tvShow }: Props) {
           serverWidth={400}
           fill
           alt='TV Show Poster'
-          style={{ objectFit: 'cover' }}
           sizes='(max-width: 768px) 70vw, (max-width: 1200px) 90vw, 100vw'
         />
       </div>
