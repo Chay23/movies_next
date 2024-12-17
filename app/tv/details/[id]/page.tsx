@@ -10,6 +10,15 @@ type Props = {
   params: { id: string };
 };
 
+export async function generateMetadata({ params }: Props) {
+  const series = await getData<tv.ShowExtended>(`/tv/${params.id}`);
+  if (!series.error) {
+    return {
+      title: series.data.name,
+    };
+  }
+}
+
 export default async function SeriesDetailsPage({ params }: Props) {
   const series = await getData<tv.ShowExtended>(`/tv/${params.id}`);
   const cast = await getData<api.CreditsResponse>(
