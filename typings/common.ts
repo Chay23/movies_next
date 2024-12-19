@@ -17,3 +17,12 @@ export type Breadcrumb = {
 };
 
 export type Breadcrumbs = Breadcrumb[];
+
+export type Production = {
+  id: number;
+  name?: string;
+  title?: string;
+  overview: string;
+  backdrop_path: string;
+  poster_path: string;
+}

@@ -6,9 +6,9 @@ import type { movie } from '@/typings/movie/movie';
 import { getData } from '@/services/api';
 
 import Head from 'next/head';
-import TrendingMovies from '@/components/home/trending/TrendingMovies';
-import PopularMovies from '@/components/home/PopularMovies';
-import NowPlaying from '@/components/home/NowPlaying';
+import TrendingMovies from '@/components/home_old/trending/TrendingMovies';
+import PopularMovies from '@/components/home_old/PopularMovies';
+import NowPlaying from '@/components/home_old/NowPlaying';
 import Layout from '@/components/layout/Layout';
 
 import { DEFAULT_PAGE_VALUE, SERVER_ERROR_OBJECT } from '@/utils/constants';

@@ -1,7 +1,7 @@
 import type { api } from '@/typings/api';
 import type { movie } from '@/typings/movie/movie';
 
-import MovieCarousel from '@/components/common/home/MovieCarousel';
+import MovieCarousel from '@/components/common/home_old/MovieCarousel';
 
 type PopularMoviesProps = {
   moviesRes: api.PaginatedResponse<movie.Movie>;
