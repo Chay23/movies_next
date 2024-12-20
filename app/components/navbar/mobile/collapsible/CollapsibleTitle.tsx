@@ -18,7 +18,7 @@ const CollapsibleTitle = ({ open, item, toggleCollapsible }: Props) => {
 
   return (
     <span
-      className={`text-3xl flex gap-3 justify-between items-center w-full px-8 py-5 ${
+      className={`text-3xl text-slate-100 flex gap-3 justify-between items-center w-full px-8 py-5 ${
         active ? 'font-semibold' : ''
       }`}
       onClick={toggleCollapsible}>

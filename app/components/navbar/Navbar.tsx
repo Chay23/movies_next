@@ -10,9 +10,9 @@ const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
 const Navbar = () => {
   return (
     <nav
-      className={`sticky top-0 left-0 w-full z-50 flex items-center justify-between h-16 px-12 xl:px-64 bg-gray-800 text-slate-100 ${roboto.className}`}>
+      className={`sticky top-0 left-0 w-full z-50 flex items-center justify-between h-16 px-12 xl:px-64 bg-gray-800 ${roboto.className}`}>
       <Link href={'/'}>
-        <h2>Movies</h2>
+        <h2 className="text-slate-100">Movies</h2>
       </Link>
       <DesktopMenu />
       <MobileMenu />

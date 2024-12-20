@@ -18,7 +18,7 @@ const Dropdown = ({
   return (
     <div
       className={`absolute bg-slate-100 shadow-md border border-slate-200 whitespace-nowrap transition-all rounded-md -z-50 ${
-        showDropdown ? 'top-full opacity-100' : 'top-0 opacity-0'
+        showDropdown ? 'top-full opacity-100' : '-top-full opacity-0'
       }`}
       onMouseEnter={handleShowDropdown}
       onMouseLeave={handleCloseDropdown}>

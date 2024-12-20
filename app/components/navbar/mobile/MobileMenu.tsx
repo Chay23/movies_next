@@ -10,7 +10,7 @@ const MobileMenu = () => {
 
   return (
     <>
-      <div className='md:hidden' onClick={toggle}>
+      <div className='md:hidden text-slate-100' onClick={toggle}>
         {menu ? <CloseIcon /> : <MenuIcon />}
       </div>
       <MenuItems menuOpen={menu} closeMenu={closeMenu} />

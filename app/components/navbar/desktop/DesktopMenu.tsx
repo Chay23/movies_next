@@ -35,7 +35,7 @@ const DesktopMenu = () => {
         return <MenuItem key={item.url} item={item} />;
       })}
       <SearchForm formClasses='self-center' />
-      <div className='cursor-pointer self-center' onClick={handleThemeChange}>
+      <div className='cursor-pointer self-center text-slate-100' onClick={handleThemeChange}>
         {theme === 'dark' && <LightModeIcon />}
         {theme === 'light' && <DarkModeIcon />}
       </div>

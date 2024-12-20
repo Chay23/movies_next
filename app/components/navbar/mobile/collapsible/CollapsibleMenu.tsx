@@ -21,7 +21,7 @@ const CollapsibleMenu = ({
 
   return (
     <ul
-      className={`overflow-hidden ease-linear duration-500 flex flex-col bg-gray-600/50 ${
+      className={`overflow-hidden ease-linear duration-500 flex flex-col bg-gray-600/50 text-slate-100 ${
         open ? 'max-h-[999px]' : 'max-h-0'
       }`}>
       {item.submenu!.map(subItem => {

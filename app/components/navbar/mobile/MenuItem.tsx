@@ -26,7 +26,7 @@ const MenuItem = ({ item, menuOpen, closeMenu }: Props) => {
     <li className='px-8 py-5'>
       <Link
         href={item.url}
-        className={`w-full text-3xl ${activeLink ? 'font-semibold' : ''}`}>
+        className={`w-full text-3xl text-slate-100 ${activeLink ? 'font-semibold' : ''}`}>
         {item.title}
       </Link>
     </li>

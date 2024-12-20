@@ -23,7 +23,7 @@ const MenuItem = ({ item }: Props) => {
 
   if (item.submenu) {
     return (
-      <li className='relative'>
+      <li className='relative text-slate-100'>
         <button
           className={`h-full nav-link-styling ${
             activeLink ? 'after:h-1' : 'after:h-0'
@@ -43,7 +43,7 @@ const MenuItem = ({ item }: Props) => {
   }
 
   return (
-    <li className='h-full relative'>
+    <li className='h-full relative text-slate-100'>
       <Link
         href={item.url}
         className={`flex items-center h-full nav-link-styling after:hover:h-1 ${

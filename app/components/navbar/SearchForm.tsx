@@ -32,7 +32,7 @@ const SearchForm = ({ formClasses = '', inputClasses = '' }: Props) => {
         placeholder='Search'
         value={searchValue}
         onChange={handleSearchValueChange}
-        className={`rounded-lg p-1 text-black max-w-sm ${inputClasses}`}
+        className={`rounded-lg p-1 max-w-sm ${inputClasses}`}
       />
       <button
         className={`md:hidden ml-4 px-4 border-2 border-gray-500 rounded-lg ${
