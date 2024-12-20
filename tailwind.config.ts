@@ -17,9 +17,13 @@ const config: Config = {
         'bg-dark': 'var(--bg-dark)',
         'bg-light': 'var(--bg-light)',
         'bg-light-100': 'var(--bg-light-100)',
-        'bg-slate-blue': 'var(--bg-slate-blue)',
+        'slate-blue-50': 'var(--slate-blue-50)',
+        'slate-blue-100': 'var(--slate-blue-100)',
+        'slate-blue-500': 'var(--slate-blue-500)',
+        'slate-blue': 'var(--slate-blue)',
         'text-primary': 'var(--text-primary)',
         'text-secondary': 'var(--text-secondary)',
+        'text-hover': 'var(--text-hover)',
         'border': 'var(--border)'
       },
       aspectRatio: {
