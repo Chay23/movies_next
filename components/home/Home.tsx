@@ -21,11 +21,11 @@ export default function Home({ trendingMovies, popularMovies, nowPlayingMovies, 
   const { value, setTrue, setFalse } = useBoolean(true);
   return (
     <div className='relative overflow-x-hidden'>
-      <div className='absolute left-1/2 -translate-x-1/2 top-5 flex cursor-pointer z-40'>
+      <div className='absolute left-1/2 -translate-x-1/2 top-5 flex cursor-pointer z-40 text-sm md:text-base'>
         <div
           className={`${
             !value ? 'bg-transparent text-blue-300' : 'bg-blue-400 text-white'
-          } border px-3 py-1 rounded-l-lg border-blue-300`}
+          } border px-3 py-1 rounded-l-lg border-blue-300 border-r-0`}
           onClick={setTrue}>
           Movies
         </div>
@@ -43,14 +43,14 @@ export default function Home({ trendingMovies, popularMovies, nowPlayingMovies, 
         }`}>
         <div className='min-w-full'>
           <TrendingComponent items={trendingMovies} isMovies />
-          <div className='flex flex-col gap-20 px-10 md:px-14 xl:px-64 py-2 xl:py-20'>
+          <div className='flex flex-col gap-4 md:gap-14 lg:gap-20 px-4 xl:px-64 py-4 lg:py-20 md:p-14'>
             <CarouselSection title='Popular' items={popularMovies.results} isMovies />
             <CarouselSection title='Now Playing' items={nowPlayingMovies.results} isMovies />
           </div>
         </div>
         <div className='min-w-full'>
         <TrendingComponent items={trendingTV} />
-          <div className='flex flex-col gap-20 px-10 md:px-14 xl:px-64 py-2 xl:py-20'>
+          <div className='flex flex-col gap-4 md:gap-14 lg:gap-20 px-4 xl:px-64 py-4 lg:py-20 md:p-14'>
             <CarouselSection title='Popular' items={popularTV.results} />
             <CarouselSection title='Top Rated' items={topRatedTV.results} />
           </div>

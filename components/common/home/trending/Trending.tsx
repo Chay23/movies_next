@@ -13,7 +13,7 @@ import Item from './Item';
 
 type Props = {
   items: api.PaginatedResponse<Production>;
-  isMovies?: boolean
+  isMovies?: boolean;
 };
 
 export default function Trending({ items, isMovies = false }: Props) {
@@ -28,7 +28,7 @@ export default function Trending({ items, isMovies = false }: Props) {
         modules={[Navigation]}>
         {items.results.map(item => (
           <SwiperSlide key={item.id} style={{ height: 'auto' }}>
-            <Item item={item} isMovies={isMovies}/>
+            <Item item={item} isMovies={isMovies} />
           </SwiperSlide>
         ))}
       </Swiper>

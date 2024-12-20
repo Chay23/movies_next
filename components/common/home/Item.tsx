@@ -23,12 +23,8 @@ const Item = ({ item, isMovies }: Props) => {
           alt='Movie poster'
           priority
         />
-        <div className='p-2'>
-          <div
-            onMouseEnter={() => {}}
-            className='hover:text-slate-500 transition-all'>
-            {isMovies ? item.title : item.name}
-          </div>
+        <div className='p-2 hover:text-slate-500 transition-all hidden lg:block'>
+          {isMovies ? item.title : item.name}
         </div>
       </article>
     </Link>

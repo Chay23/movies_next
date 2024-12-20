@@ -23,12 +23,12 @@ export default function CarouselSection({
 
   if (!mounted) {
     return (
-      <section className='bg-gray-400 animate-pulse rounded-xl shadow-light h-[450px]'></section>
+      <section className='bg-gray-400 animate-pulse rounded-xl shadow-light h-[322px] sm:h-[300px] md:h-[350px] lg:h-[450px]'></section>
     );
   }
 
   return (
-    <section className='relative bg-bg-slate-blue rounded-xl shadow-light p-10'>
+    <section className='relative bg-bg-slate-blue rounded-xl shadow-light p-4 md:p-10'>
       <h3 className='mb-8'>{title}</h3>
       <Carousel items={items} isMovies={isMovies} />
     </section>

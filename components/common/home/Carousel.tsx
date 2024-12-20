@@ -26,19 +26,19 @@ const Carousel = ({ items, isMovies = false }: Props) => {
         slidesPerView={2}
         breakpoints={{
           100: {
-            slidesPerView: 2,
+            slidesPerView: 2.3,
             spaceBetween: 10,
           },
           450: {
-            slidesPerView: 3,
+            slidesPerView: 3.3,
             spaceBetween: 10,
           },
           640: {
-            slidesPerView: 4,
+            slidesPerView: 4.3,
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 5,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
           1024: {
@@ -52,7 +52,8 @@ const Carousel = ({ items, isMovies = false }: Props) => {
         }}
         spaceBetween={10}
         loop
-        onSwiper={it => (swiperRef.current = it)}>
+        onSwiper={it => (swiperRef.current = it)}
+        >
         {items.map(item => (
           <SwiperSlide key={item.id}>
             <Item item={item} isMovies={isMovies}/>
@@ -60,11 +61,11 @@ const Carousel = ({ items, isMovies = false }: Props) => {
         ))}
       </Swiper>
       <ArrowBackIosIcon
-        className='swiper-arrow-prev absolute top-1/4 -left-6 cursor-pointer scale-125'
+        className='hidden md:block swiper-arrow-prev absolute top-1/2 -translate-y-1/2 -left-6 cursor-pointer scale-125'
         onClick={() => swiperRef.current?.slidePrev()}
       />
       <ArrowForwardIosIcon
-        className='swiper-arrow-next absolute top-1/4 -right-8 cursor-pointer scale-125'
+        className='hidden md:block swiper-arrow-next absolute top-1/2 -translate-y-1/2 -right-8 cursor-pointer scale-125'
         onClick={() => swiperRef.current?.slideNext()}
       />
     </div>
