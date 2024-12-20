@@ -4,7 +4,7 @@ import type { searchParams } from '@/typings/tv/searchParams/tvDiscover';
 import { useId } from 'react';
 import { useQueryParams } from '@/hooks/app/useQueryParams';
 
-import Select from 'react-select';
+import Select from '@/components/common/ui/Select';
 import FilterContainer from './FilterContainer';
 
 import { sortOptions } from '@/utils/app/constants';

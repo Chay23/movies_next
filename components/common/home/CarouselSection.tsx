@@ -28,7 +28,7 @@ export default function CarouselSection({
   }
 
   return (
-    <section className='relative bg-bg-slate-blue rounded-xl shadow-light p-4 md:p-10'>
+    <section className='relative bg-slate-blue rounded-xl shadow-light p-4 md:p-10'>
       <h3 className='mb-8'>{title}</h3>
       <Carousel items={items} isMovies={isMovies} />
     </section>

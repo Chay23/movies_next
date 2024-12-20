@@ -36,7 +36,7 @@ export default function Cast({ cast }: Props) {
   }
 
   return (
-    <section className='relative shadow-md p-9 rounded-2xl bg-bg-slate-blue min-w-0 w-full'>
+    <section className='relative shadow-md p-9 rounded-2xl bg-slate-blue min-w-0 w-full'>
       <div className='flex items-center mb-4 gap-4'>
         <h3 className=''>Cast</h3>
         <div className='flex gap-3'>

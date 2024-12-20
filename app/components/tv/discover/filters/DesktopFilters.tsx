@@ -16,7 +16,7 @@ export default function DesktopFilters({ genresRes }: Props) {
   }
 
   return (
-    <section className='hidden md:block p-5 bg-bg-dark border border-border shadow-xl rounded-2xl h-fit mb-8'>
+    <section className='hidden md:block p-5 bg-slate-blue border border-border shadow-light rounded-2xl h-fit mb-8'>
       <h3>Filters</h3>
       <SortFilter />
       <GenresFilter genres={genresRes.data.genres} />

@@ -11,7 +11,7 @@ type Props = {
 
 export default function Description({ series }: Props) {
   return (
-    <article className='flex flex-col md:flex-row items-center md:items-start flex-1 gap-y-10 md:gap-x-10 mb-10 p-3 md:p-10 bg-bg-slate-blue shadow-md rounded-2xl'>
+    <article className='flex flex-col md:flex-row items-center md:items-start flex-1 gap-y-10 md:gap-x-10 mb-10 p-3 md:p-10 bg-slate-blue shadow-md rounded-2xl'>
       <div className='relative aspect-2/3 w-full min-w-max max-w-xs rounded-lg overflow-hidden'>
         <Image
           imageSrc={series.poster_path}

@@ -9,10 +9,10 @@ export default function GenresListItem({ genre, handleMouseEvent }: Props) {
   return (
     <li className='flex-auto'>
       <button
-        className={`w-full py-2 md:py-1 px-3 md:border border-gray-300 rounded-lg transition-all ${
+        className={`w-full py-2 md:py-1 px-3 md:border border-slate-blue-100 rounded-lg transition-all duration-200 ${
           genre.selected
-            ? 'bg-blue-600 hover:bg-blue-700'
-            : 'hover:border-blue-600 bg-bg-dark'
+            ? 'bg-slate-blue-100 hover:bg-bg-light'
+            : 'hover:bg-slate-blue-100 bg-bg-light hover:text-text-hover'
         }`}
         onClick={() => handleMouseEvent(genre.id.toString(), genre.selected)}>
         {genre.name}
