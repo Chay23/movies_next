@@ -9,7 +9,6 @@ type Props = {
 const FilterContainer = ({ title, wrapperClasses = '', children }: Props) => {
   return (
     <article className={'border-t border-border mt-4' + wrapperClasses}>
-      {/* <hr className='my-4 bg-border' /> */}
       <h4 className='text-gray-200 md:text-text-secondary my-4'>{title}</h4>
       {children}
     </article>
