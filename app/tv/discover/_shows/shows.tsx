@@ -3,7 +3,7 @@
 import type { api } from '@/typings/api';
 import type { tv } from '@/typings/tv/tv';
 
-import PaginatedList from '@/app/components/common/list/PaginatedList';
+import PaginatedList from '@/components/common/list/PaginatedList';
 import TVShow from '@/app/components/common/tv-shows/TVShow';
 import NoResultsFound from '@/app/components/ui/NoResultsFound';
 
