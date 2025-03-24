@@ -5,7 +5,7 @@ import type { movie } from '@/typings/movie/movie';
 import { getData } from '@/services/api';
 
 import Head from 'next/head';
-import SearchResults from '@/components/search/SearchResults';
+import SearchResults from '@/components/search_old/SearchResults';
 
 import {
   DEFAULT_PAGE_VALUE,

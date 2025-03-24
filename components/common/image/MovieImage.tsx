@@ -1,4 +1,5 @@
 import Image, { ImageProps } from 'next/image';
+import {twMerge} from 'tailwind-merge';
 
 type Props = {
   imageSrc: string;
@@ -33,7 +34,7 @@ const MovieImage = ({
   return (
     <Image
       src='/static/images/no-picture.png'
-      className={className + 'bg-bg-light border border-border rounded-xl p-5'}
+      className={className + ' bg-bg-light border border-border rounded-xl p-5'}
       style={{ objectFit: 'contain' }}
       alt='No image'
       sizes={

@@ -1,4 +1,4 @@
-export default function Skeleton() {
+export default function ListSkeletonItem() {
   return (
     <article className='animate-pulse'>
       <div className='bg-gray-300 relative w-full max-w-xl aspect-5/7 mb-5 rounded-xl overflow-hidden'></div>

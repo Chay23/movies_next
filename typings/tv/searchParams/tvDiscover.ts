@@ -4,4 +4,10 @@ export namespace searchParams {
     sort_by: string;
     with_genres?: string;
   };
+
+  export type Search = {
+    page: string;
+    sort_by: string;
+    query: string;
+  };
 }

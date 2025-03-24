@@ -1,38 +1,36 @@
 import { ChangeEvent, FormEvent } from 'react';
 
 type Props = {
-  searchValue: string;
-  handleSearchValueChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSearchSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  formClasses?: string;
 };
 
-const SearchForm = ({
-  searchValue,
-  handleSearchValueChange,
-  handleSearchSubmit,
-}: Props) => {
-  const isButtonDisabled = !Boolean(searchValue.trim());
+export default function SearchForm({
+  value,
+  onChange,
+  onSubmit,
+  formClasses = '',
+}: Props) {
+  const isButtonDisabled = !Boolean(value.trim());
 
   return (
-    <form onSubmit={handleSearchSubmit}>
+    <form onSubmit={onSubmit}>
       <input
         placeholder='Search'
         name='search'
-        value={searchValue}
-        onChange={handleSearchValueChange}
-        className='rounded-lg p-1 text-black border border-gray-700'
+        value={value}
+        onChange={onChange}
+        className='rounded-lg px-3 py-2 border border-border'
       />
       <button
-        className={`ml-3 border border-gray-700 rounded-lg px-2 py-1 ${
-          isButtonDisabled
-            ? ''
-            : 'hover:bg-blue-600 hover:text-gray-50 hover:border-gray-50'
+        className={`ml-3 bg-slate-blue-500 rounded-lg px-4 py-2 transition-all duration-300 ${
+          isButtonDisabled ? '' : 'hover:bg-slate-blue-100'
         }`}
         disabled={isButtonDisabled}>
         Search
       </button>
     </form>
   );
-};
-
-export default SearchForm;
+}
