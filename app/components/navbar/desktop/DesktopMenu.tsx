@@ -1,7 +1,7 @@
 'use client';
 
 import MenuItem from './MenuItem';
-import SearchForm from '../SearchForm';
+import SearchForm from '../search/SearchForm';
 
 import { NAV_LINKS } from '@/utils/navbar/constants';
 import ThemeToggler from './ThemeToggler';

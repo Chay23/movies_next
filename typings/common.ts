@@ -25,4 +25,10 @@ export type Production = {
   overview: string;
   backdrop_path: string;
   poster_path: string;
-}
+  release_date: string;
+  first_air_date: string;
+};
+
+export type MultiProduction = Production & {
+  media_type: 'movie' | 'tv';
+};
