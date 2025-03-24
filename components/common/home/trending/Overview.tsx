@@ -14,7 +14,7 @@ export default function Overview({ item, isMovies }: Props) {
       <p className='my-5 line-clamp-3 md:line-clamp-none'>{item.overview}</p>
       <Link
         href={`/${isMovies ? 'movies' : 'tv'}/details/${item.id}`}
-        className='block mt-5 text-xl w-fit after:block after:w-0 after:bg-slate-100 after:h-[2px] after:hover:w-full after:transition-all after:duration-500'>
+        className='block mt-5 text-xl w-fit after:block after:w-0 after:bg-slate-100 after:h-[2px] hover:after:w-full after:transition-all after:duration-500'>
         View
       </Link>
     </div>

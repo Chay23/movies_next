@@ -44,7 +44,7 @@ const Movies = ({ moviesRes }: Props) => {
       movies={data.results}
       page={parseInt(queryPage)}
       pages={data.total_pages}
-      listClasses='md:max-lg:!grid-cols-2'
+      listClasses='md:max-lg:grid-cols-2!'
       handlePageChange={handlePageChange}
     />
   );

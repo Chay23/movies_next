@@ -33,7 +33,7 @@ export default function FiltersDrawer({
       </button>
       <Drawer
         show={value}
-        className={`flex flex-col p-8 bg-gradient-to-b from-gray-700 to-gray-600 ${
+        className={`flex flex-col p-8 bg-linear-to-b from-gray-700 to-gray-600 ${
           drawerWrapperClasses ?? ''
         } z-50`}>
         <DrawerHeader handleToggleFilters={handleToggleFilters} />

@@ -87,7 +87,7 @@ const SearchForm = ({
         value={searchValue}
         onChange={handleSearchValueChange}
         onClick={handleClickInput}
-        className={`rounded-lg rounded-r-none md:rounded-r-lg px-2 py-1 w-full lg:min-w-[350px] focus:outline-none ${inputClasses}`}
+        className={`rounded-lg rounded-r-none md:rounded-r-lg px-2 py-1 w-full lg:min-w-[350px] focus:outline-hidden ${inputClasses}`}
         autoComplete='off'
       />
       <button

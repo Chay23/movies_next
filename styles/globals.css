@@ -1,59 +1,100 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-html {
-  color: #212427;
-  overflow-y: scroll;
+@theme {
+  --shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+
+  --color-blue-charcoal: #212427;
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-light: var(--bg-light);
+  --color-bg-light-100: var(--bg-light-100);
+  --color-slate-blue-50: var(--slate-blue-50);
+  --color-slate-blue-100: var(--slate-blue-100);
+  --color-slate-blue-500: var(--slate-blue-500);
+  --color-slate-blue: var(--slate-blue);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-hover: var(--text-hover);
+  --color-border: var(--border);
+
+  --aspect-5\/7: 5 / 7;
+  --aspect-3\/1: 3 / 1;
+  --aspect-2\/3: 2 / 3;
+
+  --grid-template-columns-1\/4: 1fr 4fr;
+  --grid-template-columns-1\/2: 1fr 2fr;
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --slate-blue-50:#60a5fa;
-  --slate-blue-100: #70a7ea;
-}
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-[data-theme='light'] {
-  --text-primary: #444;
-  --text-secondary: #989898;
-  --text-hover: #f4f7f6;
-  --bg-dark: #fff;
-  --bg-light: #f9fbfd;
-  --bg-light-100: #f1f1f1;
-  --slate-blue: #E2E8F0;
-  --slate-blue-500: #B8C7DA;
-  --border: #e1e1e1;
-}
-
-[data-theme='dark'] {
-  --text-primary: #f4f7f6;
-  --text-secondary: #989898;
-  --text-hover: #444;
-  --bg-dark: #000;
-  --bg-light: #1b1b1b;
-  --bg-light-100: #121212;
-  --slate-blue: #1A2432;
-  --slate-blue-500: #4e74a3;
-  --border: #444;
-}
-
-body {
-  color: var(--text-primary);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
 }
 
-@layer components {
-  .nav-link-styling {
-    @apply after:absolute after:bg-slate-200 after:bottom-0 after:left-0 after:w-full after:transition-all;
+@utility nav-link-styling {
+  @apply after:absolute after:bg-slate-200 after:bottom-0 after:left-0 after:w-full after:transition-all;
+}
+
+@layer utilities {
+  html {
+    color: #212427;
+    overflow-y: scroll;
+  }
+
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --slate-blue-50: #60a5fa;
+    --slate-blue-100: #70a7ea;
+  }
+
+  [data-theme='light'] {
+    --text-primary: #444;
+    --text-secondary: #989898;
+    --text-hover: #f4f7f6;
+    --bg-dark: #fff;
+    --bg-light: #f9fbfd;
+    --bg-light-100: #f1f1f1;
+    --slate-blue: #e2e8f0;
+    --slate-blue-500: #b8c7da;
+    --border: #e1e1e1;
+  }
+
+  [data-theme='dark'] {
+    --text-primary: #f4f7f6;
+    --text-secondary: #989898;
+    --text-hover: #444;
+    --bg-dark: #000;
+    --bg-light: #1b1b1b;
+    --bg-light-100: #121212;
+    --slate-blue: #1a2432;
+    --slate-blue-500: #4e74a3;
+    --border: #444;
+  }
+
+  body {
+    color: var(--text-primary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --foreground-rgb: 255, 255, 255;
+      --background-start-rgb: 0, 0, 0;
+      --background-end-rgb: 0, 0, 0;
+    }
   }
 }
 

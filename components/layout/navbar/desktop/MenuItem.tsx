@@ -46,7 +46,7 @@ const MenuItem = ({ item }: Props) => {
     <li className='h-full relative'>
       <Link
         href={item.url}
-        className={`flex items-center h-full nav-link-styling after:hover:h-1 ${
+        className={`flex items-center h-full nav-link-styling hover:after:h-1 ${
           activeLink ? 'after:h-1' : 'after:h-0'
         }`}>
         {item.title}

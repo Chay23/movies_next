@@ -9,7 +9,7 @@ const NoResultsFound = () => {
           fontSize='large'
           className='scale-150 absolute -top-7 -left-7 text-gray-700'
         />
-        <SearchIcon className='scale-[10] text-gray-700' />
+        <SearchIcon className='scale-10 text-gray-700' />
       </div>
       <h3 className='py-24'>No Results Found</h3>
     </article>

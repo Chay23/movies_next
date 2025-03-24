@@ -28,7 +28,7 @@ const MobileFilters = ({ movieGenres }: Props) => {
       </button>
       <Drawer
         show={value}
-        className='p-8 bg-gradient-to-b from-gray-700 to-gray-600'>
+        className='p-8 bg-linear-to-b from-gray-700 to-gray-600'>
         <>
           <span className='flex justify-between'>
             <h3 className='text-gray-200'>Filters</h3>

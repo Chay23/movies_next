@@ -17,7 +17,7 @@ export default function ResultsItem({ item }: Props) {
           imageSrc={item.poster_path}
           serverWidth={300}
           style={{ objectFit: item.poster_path ? 'cover' : 'contain' }}
-          className={`!rounded-md ${item.poster_path ? '' : '!p-1'}`}
+          className={`rounded-md! ${item.poster_path ? '' : 'p-1!'}`}
           fill
           alt='Poster'
           sizes='(max-width: 768px) 70vw, (max-width: 1200px) 90vw, 100vw'

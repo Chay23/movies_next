@@ -10,7 +10,7 @@ type Props = {
 export default function Item({ item, isMovies }: Props) {
   return (
     <article className='min-h-[calc(100vh-64px)] flex flex-col lg:flex-row items-center gap-12 lg:gap-x-12 xl:gap-x-20 pt-14 md:pt-20 lg:pt-0 px-12 md:px-16 lg:px-20 xl:px-64'>
-      <div className='absolute top-0 left-0 h-full w-full overflow-hidden bg-gradient-to-b from-slate-950 via-slate-700 to-slate-300 opacity-70 -z-10'></div>
+      <div className='absolute top-0 left-0 h-full w-full overflow-hidden bg-linear-to-b from-slate-950 via-slate-700 to-slate-300 opacity-70 -z-10'></div>
       <MovieImage
         imageSrc={item.poster_path}
         serverWidth={400}
